@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HotelManagement.Domain.Repositories;
+using HotelManagement.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +12,10 @@ namespace HotelManagement.Infrastructure
         {
             services.AddDbContext<HotelManagementDbContext>(options => 
                 options.UseSqlite(configuration.GetConnectionString("Default")));
+
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IHotelRepository, HotelRepository>();
+
             return services;
         }
     }
