@@ -1,9 +1,24 @@
 ﻿using HotelManagement.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelManagement.Infrastructure.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
+        private readonly HotelManagementDbContext _dbContext;
+
+        public GenericRepository(HotelManagementDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+        public Task<T> Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+        public async Task<ICollection<T>> GetAll()
+        {
+            return await _dbContext.Set<T>().ToListAsync();
+        }
         public Task<T> Add(T entity)
         {
             throw new NotImplementedException();
@@ -14,15 +29,7 @@ namespace HotelManagement.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<T> Get(int id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<ICollection<T>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
 
         public Task<T> Update(T entity)
         {
