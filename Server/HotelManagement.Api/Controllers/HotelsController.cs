@@ -1,4 +1,6 @@
-﻿using HotelManagement.Domain.Repositories;
+﻿using AutoMapper;
+using HotelManagement.Api.DTOs.Hotel;
+using HotelManagement.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -9,18 +11,20 @@ namespace HotelManagement.Api.Controllers
     [ApiController]
     public class HotelsController : ControllerBase
     {
-        private readonly IHotelRepository hotelRepository;  // todo use repository injection in command/query layer
+        private readonly IHotelRepository _hotelRepository;  // todo use repository injection in command/query layer
+        private readonly IMapper _mapper;
 
-        public HotelsController(IHotelRepository hotelRepository)
+        public HotelsController(IHotelRepository hotelRepository, IMapper mapper)
         {
-            this.hotelRepository = hotelRepository;
+            _hotelRepository = hotelRepository;
+            _mapper = mapper;
         }
         // GET: api/<HotelsController>
         [HttpGet]
-        public async Task<ICollection<string>> Get()    //todo dto objects
+        public async Task<ICollection<HotelDto>> Get()    //todo dto objects
         {
-            //return hotelRepository.GetAll();
-            return new List<string> { "123" };          // todo CQRS -> Commands -> mediator
+            var hotels = await _hotelRepository.GetAll();
+            return _mapper.Map<ICollection<HotelDto>>(hotels);         // todo CQRS -> Commands -> mediator
         }
     }
 }
