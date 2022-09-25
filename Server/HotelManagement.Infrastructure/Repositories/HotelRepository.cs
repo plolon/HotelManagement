@@ -5,5 +5,6 @@ namespace HotelManagement.Infrastructure.Repositories
 {
     public class HotelRepository : GenericRepository<Hotel>, IHotelRepository
     {
+        public HotelRepository(HotelManagementDbContext dbContext) : base(dbContext) { }
     }
 }
