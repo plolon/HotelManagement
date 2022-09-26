@@ -11,9 +11,9 @@ namespace HotelManagement.Infrastructure.Repositories
         {
             _dbContext = dbContext;
         }
-        public Task<T> Get(int id)
+        public async Task<T> Get(int id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Set<T>().FindAsync(id);
         }
         public async Task<ICollection<T>> GetAll()
         {

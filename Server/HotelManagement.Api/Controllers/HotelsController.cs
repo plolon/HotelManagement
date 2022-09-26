@@ -26,5 +26,12 @@ namespace HotelManagement.Api.Controllers
             var hotels = await _mediator.Send(new GetAllHotelsRequest());
             return hotels;
         }
+        // GET: api/<HotelsController>/id
+        [HttpGet("{id}")]
+        public async Task<HotelDto> Get(int id)
+        {
+            var hotel = await _mediator.Send(new GetHotelByIdRequest { Id = id});
+            return hotel;
+        }
     }
 }
