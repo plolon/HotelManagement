@@ -1,7 +1,6 @@
-﻿using AutoMapper;
-using HotelManagement.Api.DTOs.Hotel;
+﻿using HotelManagement.Api.DTOs.Hotel;
+using HotelManagement.Api.Features.Commands.Hotels.Requests;
 using HotelManagement.Api.Features.Queries.Hotels.Requests;
-using HotelManagement.Domain.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,6 +30,13 @@ namespace HotelManagement.Api.Controllers
         public async Task<HotelDto> Get(int id)
         {
             var hotel = await _mediator.Send(new GetHotelByIdRequest { Id = id});
+            return hotel;
+        }
+        // POST: api/<HotelsController>
+        [HttpPost]
+        public async Task<HotelDto> Post([FromBody]SaveHotelDto saveHotelDto)
+        {
+            var hotel = await _mediator.Send(new CreateHotelRequest { SaveHotelDto = saveHotelDto });
             return hotel;
         }
     }

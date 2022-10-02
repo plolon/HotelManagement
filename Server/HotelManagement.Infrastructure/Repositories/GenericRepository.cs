@@ -19,9 +19,10 @@ namespace HotelManagement.Infrastructure.Repositories
         {
             return await _dbContext.Set<T>().ToListAsync();
         }
-        public Task<T> Add(T entity)
+        public async Task<T> Add(T entity)
         {
-            throw new NotImplementedException();
+            await _dbContext.Set<T>().AddAsync(entity);
+            return entity;
         }
 
         public Task<bool> Delete(int id)

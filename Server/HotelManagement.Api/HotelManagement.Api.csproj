@@ -25,8 +25,4 @@
     <ProjectReference Include="..\HotelManagement.Infrastructure\HotelManagement.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Commands\" />
-  </ItemGroup>
-
 </Project>
