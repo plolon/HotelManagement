@@ -26,9 +26,14 @@ namespace HotelManagement.Infrastructure.Repositories
             return entity;
         }
 
-        public Task<bool> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            var entity = await _dbContext.Set<T>().FindAsync(id);
+            if (entity == null) {
+                return false;
+            }
+            _dbContext.Set<T>().Remove(entity);
+            return true;
         }
 
 
