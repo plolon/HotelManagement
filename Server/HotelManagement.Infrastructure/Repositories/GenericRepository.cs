@@ -33,14 +33,16 @@ namespace HotelManagement.Infrastructure.Repositories
                 return false;
             }
             _dbContext.Set<T>().Remove(entity);
+            await _dbContext.SaveChangesAsync(); // TODO: Unit of work
             return true;
         }
 
 
-
-        public Task<T> Update(T entity)
+        public async Task<T> Update(T entity)
         {
-            throw new NotImplementedException();
+            _dbContext.Set<T>().Update(entity);
+            await _dbContext.SaveChangesAsync(); // TODO: Unit of work
+            return entity;
         }
     }
 }

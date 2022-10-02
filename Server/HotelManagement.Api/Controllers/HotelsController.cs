@@ -45,5 +45,11 @@ namespace HotelManagement.Api.Controllers
         {
             return await _mediator.Send(new DeleteHotelRequest { Id = id });
         }
+
+        [HttpPut("{id}")]
+        public async Task<HotelDto> Update([FromBody] SaveHotelDto updateHotelDto, int id)
+        {
+            return await _mediator.Send(new UpdateHotelRequest { UpdateHotelDto = updateHotelDto, Id = id });
+        }
     }
 }
