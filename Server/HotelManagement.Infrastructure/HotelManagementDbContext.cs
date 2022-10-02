@@ -13,5 +13,9 @@ namespace HotelManagement.Infrastructure
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(HotelManagementDbContext).Assembly);
         }
+
+        // TODO
+        // add auto populate createdDate on create
+        // add auto populate modifiedDate on update and create
     }
 }
