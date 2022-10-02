@@ -5,6 +5,7 @@ namespace HotelManagement.Api.Features.Commands.Hotels.Requests
 {
     public class UpdateHotelRequest : IRequest<HotelDto>
     {
-        public HotelDto UpdateHotelDto  {get; set;} 
+        public SaveHotelDto UpdateHotelDto  {get; set;} 
+        public int Id { get; set; }
     }
 }
