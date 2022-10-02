@@ -22,6 +22,7 @@ namespace HotelManagement.Infrastructure.Repositories
         public async Task<T> Add(T entity)
         {
             await _dbContext.Set<T>().AddAsync(entity);
+            await _dbContext.SaveChangesAsync();    // TODO implement unit of work pattern !important!
             return entity;
         }
 
