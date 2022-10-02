@@ -1,11 +1,13 @@
 ﻿using HotelManagement.Domain.Models;
+using HotelManagement.Domain.Models.Common;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace HotelManagement.Infrastructure
 {
-    public class HotelManagementDbContext :DbContext
+    public class HotelManagementDbContext : DbContext
     {
-        public HotelManagementDbContext(DbContextOptions<HotelManagementDbContext> options) :base(options) {}
+        public HotelManagementDbContext(DbContextOptions<HotelManagementDbContext> options) : base(options) { }
 
         public DbSet<Hotel> Hotels { get; set; }
 
@@ -14,8 +16,19 @@ namespace HotelManagement.Infrastructure
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(HotelManagementDbContext).Assembly);
         }
 
-        // TODO
-        // add auto populate createdDate on create
-        // add auto populate modifiedDate on update and create
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var entries = ChangeTracker.Entries<BaseDomainEntity>();
+            foreach (var entry in entries)
+            {
+                if (entry.State == EntityState.Added)
+                {
+                    entry.Entity.DateCreated = DateTime.Now;
+                }
+                entry.Entity.DateModified = DateTime.Now;
+            }
+
+            return base.SaveChangesAsync(cancellationToken);
+        }
     }
 }
