@@ -29,15 +29,21 @@ namespace HotelManagement.Api.Controllers
         [HttpGet("{id}")]
         public async Task<HotelDto> Get(int id)
         {
-            var hotel = await _mediator.Send(new GetHotelByIdRequest { Id = id});
+            var hotel = await _mediator.Send(new GetHotelByIdRequest { Id = id });
             return hotel;
         }
         // POST: api/<HotelsController>
         [HttpPost]
-        public async Task<HotelDto> Post([FromBody]SaveHotelDto saveHotelDto)
+        public async Task<HotelDto> Post([FromBody] SaveHotelDto saveHotelDto)
         {
             var hotel = await _mediator.Send(new CreateHotelRequest { SaveHotelDto = saveHotelDto });
             return hotel;
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<bool> Delete(int id)
+        {
+            return await _mediator.Send(new DeleteHotelRequest { Id = id });
         }
     }
 }
