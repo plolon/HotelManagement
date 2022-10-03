@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HotelManagement.Domain.Models.OptionSets
 {
-    [Table("RoomType")]
+    [Table("RoomTypes")]
     public class RoomType : BaseDomainEnumEntity
     {
         public RoomType(RoomTypeEnum @enum)
