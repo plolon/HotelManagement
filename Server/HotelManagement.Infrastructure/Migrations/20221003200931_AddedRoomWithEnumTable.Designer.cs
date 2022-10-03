@@ -3,6 +3,7 @@ using System;
 using HotelManagement.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(HotelManagementDbContext))]
-    partial class HotelManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221003200931_AddedRoomWithEnumTable")]
+    partial class AddedRoomWithEnumTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.9");
@@ -111,6 +113,7 @@ namespace HotelManagement.Infrastructure.Migrations
             modelBuilder.Entity("HotelManagement.Domain.Models.OptionSets.RoomType", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
@@ -120,34 +123,7 @@ namespace HotelManagement.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RoomTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 0,
-                            Name = "Single"
-                        },
-                        new
-                        {
-                            Id = 1,
-                            Name = "Twin"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Double"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Triple"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Quad"
-                        });
+                    b.ToTable("RoomType");
                 });
 
             modelBuilder.Entity("HotelManagement.Domain.Models.HotelRoom", b =>
