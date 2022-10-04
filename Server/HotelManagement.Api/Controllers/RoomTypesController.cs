@@ -1,10 +1,11 @@
 ﻿using HotelManagement.Api.DTOs.RoomType;
+using HotelManagement.Api.Features.Queries.RoomTypes.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelManagement.Api.Controllers;
 
-[Route("api/[controler]")]
+[Route("api/[controller]")]
 [ApiController]
 public class RoomTypesController : ControllerBase
 {
@@ -19,13 +20,13 @@ public class RoomTypesController : ControllerBase
     [HttpGet]
     public async Task<ICollection<RoomTypeDto>> Get()
     {
-        throw new NotImplementedException();
+        return await _mediator.Send(new GetAllRoomTypesRequest());
     }
     
     // GET: api/<RoomTypesController>
     [HttpGet("{id}")]
     public async Task<RoomTypeDto> Get(int id)
     {
-        throw new NotImplementedException();
+        return await _mediator.Send(new GetRoomTypeRequest{Id = id});
     }
 }
