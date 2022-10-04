@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using HotelManagement.Api.DTOs.Hotel;
+using HotelManagement.Api.DTOs.RoomType;
 using HotelManagement.Domain.Models;
+using HotelManagement.Domain.Models.OptionSets;
 
 namespace HotelManagement.Api.Profiles
 {
@@ -31,6 +33,8 @@ namespace HotelManagement.Api.Profiles
                     City = h.City,
                     Street = h.Street
                 }));
+
+            CreateMap<RoomType, RoomTypeDto>();
 
             #endregion domain->dto
         }
