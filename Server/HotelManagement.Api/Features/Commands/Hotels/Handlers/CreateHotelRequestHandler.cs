@@ -19,12 +19,6 @@ namespace HotelManagement.Api.Features.Commands.Hotels.Handlers
         }
         public async Task<HotelDto> Handle(CreateHotelRequest request, CancellationToken cancellationToken)
         {
-            // TODO
-            // some validation
-            // maybe add custom response
-            // add try catch and add errors to custom response
-            // 2137
-
             var hotelDtoValidator = new HotelDtoValidator();
             var validationResult = await hotelDtoValidator.ValidateAsync(request.SaveHotelDto);
 
