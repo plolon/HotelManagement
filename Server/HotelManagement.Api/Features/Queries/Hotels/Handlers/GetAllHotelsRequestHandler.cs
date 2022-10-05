@@ -8,18 +8,18 @@ namespace HotelManagement.Api.Features.Queries.Hotels.Handlers
 {
     public class GetAllHotelsRequestHandler : IRequestHandler<GetAllHotelsRequest, ICollection<HotelDto>>
     {
-        private readonly IHotelRepository _hotelRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public GetAllHotelsRequestHandler(IHotelRepository hotelRepository, IMapper mapper)
+        public GetAllHotelsRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _hotelRepository = hotelRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
         public async Task<ICollection<HotelDto>> Handle(GetAllHotelsRequest request, CancellationToken cancellationToken)
         {
-            var hotels = await _hotelRepository.GetAll();
+            var hotels = await _unitOfWork.Hotels.GetAll();
             return _mapper.Map<ICollection<HotelDto>>(hotels);
         }
     }

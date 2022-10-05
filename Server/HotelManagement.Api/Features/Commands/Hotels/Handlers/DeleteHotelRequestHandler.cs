@@ -8,17 +8,18 @@ namespace HotelManagement.Api.Features.Commands.Hotels.Handlers
 {
     public class DeleteHotelRequestHandler : IRequestHandler<DeleteHotelRequest, bool>
     {
-        private readonly IHotelRepository _hotelRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public DeleteHotelRequestHandler(IHotelRepository hotelRepository
-        )
+        public DeleteHotelRequestHandler(IUnitOfWork unitOfWork)
         {
-            _hotelRepository = hotelRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<bool> Handle(DeleteHotelRequest request, CancellationToken cancellationToken)
         {
-            return await _hotelRepository.Delete(request.Id);
+            bool result = await _unitOfWork.Hotels.Delete(request.Id);
+            await _unitOfWork.Complete();
+            return result;
         }
     }
 }

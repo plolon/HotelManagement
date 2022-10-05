@@ -8,17 +8,17 @@ namespace HotelManagement.Api.Features.Queries.RoomTypes.Handlers;
 
 public class GetAllRoomTypesRequestHandler :IRequestHandler<GetAllRoomTypesRequest, ICollection<RoomTypeDto>>
 {
-    private readonly IRoomTypeRepository _roomTypeRepository;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public GetAllRoomTypesRequestHandler(IRoomTypeRepository roomTypeRepository, IMapper mapper)
+    public GetAllRoomTypesRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
     {
-        _roomTypeRepository = roomTypeRepository;
+        _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
     public async Task<ICollection<RoomTypeDto>> Handle(GetAllRoomTypesRequest request, CancellationToken cancellationToken)
     {
-        var roomtypes = await _roomTypeRepository.GetAll();
+        var roomtypes = await _unitOfWork.RoomTypes.GetAll();
         return _mapper.Map<ICollection<RoomTypeDto>>(roomtypes);
     }
 }

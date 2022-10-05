@@ -22,7 +22,6 @@ namespace HotelManagement.Infrastructure.Repositories
         public async Task<T> Add(T entity)
         {
             await _dbContext.Set<T>().AddAsync(entity);
-            await _dbContext.SaveChangesAsync();    // TODO implement unit of work pattern !important!
             return entity;
         }
 
@@ -33,7 +32,6 @@ namespace HotelManagement.Infrastructure.Repositories
                 return false;
             }
             _dbContext.Set<T>().Remove(entity);
-            await _dbContext.SaveChangesAsync(); // TODO: Unit of work
             return true;
         }
 
@@ -41,7 +39,6 @@ namespace HotelManagement.Infrastructure.Repositories
         public async Task<T> Update(T entity)
         {
             _dbContext.Set<T>().Update(entity);
-            await _dbContext.SaveChangesAsync(); // TODO: Unit of work
             return entity;
         }
     }

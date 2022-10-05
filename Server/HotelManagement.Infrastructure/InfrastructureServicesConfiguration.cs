@@ -16,7 +16,8 @@ namespace HotelManagement.Infrastructure
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IHotelRepository, HotelRepository>();
             services.AddScoped<IRoomTypeRepository, RoomTypeRepository>();
-
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            
             return services;
         }
     }
