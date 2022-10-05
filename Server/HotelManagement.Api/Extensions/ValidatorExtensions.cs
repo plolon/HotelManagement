@@ -5,9 +5,7 @@ namespace HotelManagement.Api.Extensions
 {
     public static class ValidatorExtensions
     {
-        public static string GenerateErrorMessages(
-            this ValidationResult validator
-        )
+        public static string GenerateErrorMessages(this ValidationResult validator)
         {
             var message = "";
             validator.Errors

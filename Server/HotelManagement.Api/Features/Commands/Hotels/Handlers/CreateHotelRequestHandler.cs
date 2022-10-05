@@ -14,13 +14,13 @@ namespace HotelManagement.Api.Features.Commands.Hotels.Handlers
         CreateHotelRequestHandler : IRequestHandler<CreateHotelRequest,
             HotelDto>
     {
-        private readonly IHotelRepository _hotelRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public CreateHotelRequestHandler(IHotelRepository hotelRepository,
+        public CreateHotelRequestHandler(IUnitOfWork unitOfWork,
             IMapper mapper)
         {
-            _hotelRepository = hotelRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
@@ -39,7 +39,8 @@ namespace HotelManagement.Api.Features.Commands.Hotels.Handlers
             }
 
             var hotel = _mapper.Map<Hotel>(request.SaveHotelDto);
-            hotel = await _hotelRepository.Add(hotel);
+            hotel = await _unitOfWork.Hotels.Add(hotel);
+            await _unitOfWork.Complete();
             return _mapper.Map<HotelDto>(hotel);
         }
     }
