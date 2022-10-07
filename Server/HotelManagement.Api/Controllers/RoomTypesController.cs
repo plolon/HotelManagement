@@ -18,15 +18,9 @@ public class RoomTypesController : ControllerBase
 
     // GET: api/<RoomTypesController>
     [HttpGet]
-    public async Task<ICollection<RoomTypeDto>> Get()
-    {
-        return await _mediator.Send(new GetAllRoomTypesRequest());
-    }
-    
+    public async Task<ICollection<RoomTypeDto>> Get() => await _mediator.Send(new GetAllRoomTypesRequest());
+
     // GET: api/<RoomTypesController>
     [HttpGet("{id}")]
-    public async Task<RoomTypeDto> Get(int id)
-    {
-        return await _mediator.Send(new GetRoomTypeRequest{Id = id});
-    }
+    public async Task<RoomTypeDto> Get(int id) => await _mediator.Send(new GetRoomTypeRequest{Id = id});
 }
