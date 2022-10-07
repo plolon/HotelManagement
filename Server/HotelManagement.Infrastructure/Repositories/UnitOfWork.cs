@@ -9,11 +9,13 @@ public class UnitOfWork : IUnitOfWork
     public UnitOfWork(
         HotelManagementDbContext dbContext,
         IHotelRepository hotelRepository,
-        IRoomTypeRepository roomTypeRepository)
+        IRoomTypeRepository roomTypeRepository,
+        IHotelRoomRepository hotelRoomRepository)
     {
         _dbContext = dbContext;
         this.Hotels = hotelRepository;
         this.RoomTypes = roomTypeRepository;
+        this.HotelRooms = hotelRoomRepository;
     }
 
     public void Dispose()
@@ -29,4 +31,5 @@ public class UnitOfWork : IUnitOfWork
 
     public IHotelRepository Hotels { get; }
     public IRoomTypeRepository RoomTypes { get; }
+    public IHotelRoomRepository HotelRooms { get; }
 }

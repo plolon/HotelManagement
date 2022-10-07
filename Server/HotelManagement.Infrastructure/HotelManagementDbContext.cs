@@ -11,7 +11,7 @@ namespace HotelManagement.Infrastructure
         public HotelManagementDbContext(DbContextOptions<HotelManagementDbContext> options) : base(options) { }
 
         public DbSet<Hotel> Hotels { get; set; }
-        public DbSet<HotelRoom> Rooms { get; set; }
+        public DbSet<HotelRoom> HotelRooms { get; set; }
         public DbSet<RoomType> RoomTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -18,38 +18,30 @@ namespace HotelManagement.Api.Controllers
         {
             _mediator = mediator;
         }
+        
         // GET: api/<HotelsController>
         [HttpGet]
-        public async Task<ICollection<HotelDto>> Get()
-        {
-            var hotels = await _mediator.Send(new GetAllHotelsRequest());
-            return hotels;
-        }
+        public async Task<ICollection<HotelDto>> Get() => 
+            await _mediator.Send(new GetAllHotelsRequest());
+        
         // GET: api/<HotelsController>/id
         [HttpGet("{id}")]
-        public async Task<HotelDto> Get(int id)
-        {
-            var hotel = await _mediator.Send(new GetHotelByIdRequest { Id = id });
-            return hotel;
-        }
+        public async Task<HotelDto> Get(int id) => 
+            await _mediator.Send(new GetHotelByIdRequest { Id = id });
+        
         // POST: api/<HotelsController>
         [HttpPost]
-        public async Task<HotelDto> Post([FromBody] SaveHotelDto saveHotelDto)
-        {
-            var hotel = await _mediator.Send(new CreateHotelRequest { SaveHotelDto = saveHotelDto });
-            return hotel;
-        }
+        public async Task<HotelDto> Post([FromBody] SaveHotelDto saveHotelDto) => 
+            await _mediator.Send(new CreateHotelRequest { SaveHotelDto = saveHotelDto });
 
-        [HttpDelete("{id}")]
-        public async Task<bool> Delete(int id)
-        {
-            return await _mediator.Send(new DeleteHotelRequest { Id = id });
-        }
-
+        // PUT: api/<HotelsController>/id
         [HttpPut("{id}")]
-        public async Task<HotelDto> Update([FromBody] SaveHotelDto updateHotelDto, int id)
-        {
-            return await _mediator.Send(new UpdateHotelRequest { UpdateHotelDto = updateHotelDto, Id = id });
-        }
+        public async Task<HotelDto> Update([FromBody] SaveHotelDto updateHotelDto, int id) => 
+            await _mediator.Send(new UpdateHotelRequest { UpdateHotelDto = updateHotelDto, Id = id });
+        
+        // DELETE: api/<HotelsController>/id
+        [HttpDelete("{id}")]
+        public async Task<bool> Delete(int id) => 
+            await _mediator.Send(new DeleteHotelRequest { Id = id });
     }
 }
