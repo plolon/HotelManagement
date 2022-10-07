@@ -18,7 +18,7 @@ namespace HotelManagement.Api.Features.Queries.HotelRooms.Handlers
         }
         public async Task<HotelRoomDto> Handle(GetHotelRoomByIdRequest request, CancellationToken cancellationToken)
         {
-            var hotel = await _unitOfWork.HotelRooms.Get(request.Id);
+            var hotel = await _unitOfWork.HotelRooms.GetHotelRoomWithDetailsById(request.Id);
             return _mapper.Map<HotelRoomDto>(hotel);
         }
     }
