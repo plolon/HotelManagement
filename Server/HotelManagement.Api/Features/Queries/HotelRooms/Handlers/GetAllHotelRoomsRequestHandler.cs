@@ -18,7 +18,8 @@ namespace HotelManagement.Api.Features.Queries.HotelRooms.Handlers
         }
         public async Task<ICollection<HotelRoomDto>> Handle(GetAllHotelRoomsRequest request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var hotels = await _unitOfWork.HotelRooms.GetAll();
+            return _mapper.Map<ICollection<HotelRoomDto>>(hotels);
         }
     }
 }

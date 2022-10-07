@@ -6,4 +6,5 @@ public interface IUnitOfWork :IDisposable
     
     IHotelRepository Hotels { get; }
     IRoomTypeRepository RoomTypes { get; }
+    IHotelRoomRepository HotelRooms { get; }
 }
