@@ -10,6 +10,8 @@ namespace HotelManagement.Domain.Models
     {
         [StringLength(128)]
         public string Number { get; set; }
+
+        public int RoomTypeId { get; set; }
         public virtual RoomType RoomType { get; set; }
         public int HotelId { get; set; }
         public virtual Hotel Hotel { get; set; }
