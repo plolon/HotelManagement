@@ -1,5 +1,5 @@
-﻿using HotelManagement.Api.DTOs.RoomType;
-using HotelManagement.Api.Features.Queries.RoomTypes.Requests;
+﻿using HotelManagement.Application.DTOs.RoomType;
+using HotelManagement.Application.Features.Queries.RoomTypes.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
