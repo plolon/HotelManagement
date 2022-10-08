@@ -1,10 +1,8 @@
-﻿using HotelManagement.Api.DTOs.Hotel;
-using HotelManagement.Api.Features.Commands.Hotels.Requests;
-using HotelManagement.Api.Features.Queries.Hotels.Requests;
+﻿using HotelManagement.Application.DTOs.Hotel;
+using HotelManagement.Application.Features.Commands.Hotels.Requests;
+using HotelManagement.Application.Features.Queries.Hotels.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace HotelManagement.Api.Controllers
 {
