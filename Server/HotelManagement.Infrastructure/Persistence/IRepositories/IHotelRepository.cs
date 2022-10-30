@@ -1,6 +1,6 @@
 ﻿using HotelManagement.Domain.Models;
 
-namespace HotelManagement.Domain.Repositories
+namespace HotelManagement.Infrastructure.Persistence.IRepositories
 {
     public interface IHotelRepository :IGenericRepository<Hotel>
     {

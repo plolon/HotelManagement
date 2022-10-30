@@ -1,24 +1,25 @@
 ﻿using AutoMapper;
 using HotelManagement.Application.DTOs.RoomType;
 using HotelManagement.Application.Features.Queries.RoomTypes.Requests;
-using HotelManagement.Domain.Repositories;
+using HotelManagement.Infrastructure.Persistence;
 using MediatR;
 
-namespace HotelManagement.Application.Features.Queries.RoomTypes.Handlers;
-
-public class GetAllRoomTypesRequestHandler :IRequestHandler<GetAllRoomTypesRequest, ICollection<RoomTypeDto>>
+namespace HotelManagement.Application.Features.Queries.RoomTypes.Handlers
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
+    public class GetAllRoomTypesRequestHandler :IRequestHandler<GetAllRoomTypesRequest, ICollection<RoomTypeDto>>
+    {
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-    public GetAllRoomTypesRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
-    {
-        _unitOfWork = unitOfWork;
-        _mapper = mapper;
-    }
-    public async Task<ICollection<RoomTypeDto>> Handle(GetAllRoomTypesRequest request, CancellationToken cancellationToken)
-    {
-        var roomtypes = await _unitOfWork.RoomTypes.GetAll();
-        return _mapper.Map<ICollection<RoomTypeDto>>(roomtypes);
-    }
+        public GetAllRoomTypesRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        {
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
+        }
+        public async Task<ICollection<RoomTypeDto>> Handle(GetAllRoomTypesRequest request, CancellationToken cancellationToken)
+        {
+            var roomtypes = await _unitOfWork.RoomTypes.GetAll();
+            return _mapper.Map<ICollection<RoomTypeDto>>(roomtypes);
+        }
+    }   
 }

@@ -1,6 +1,6 @@
-﻿using HotelManagement.Domain.Repositories;
+﻿using HotelManagement.Infrastructure.Persistence.IRepositories;
 
-namespace HotelManagement.Infrastructure.Repositories;
+namespace HotelManagement.Infrastructure.Persistence;
 
 public class UnitOfWork : IUnitOfWork
 {
