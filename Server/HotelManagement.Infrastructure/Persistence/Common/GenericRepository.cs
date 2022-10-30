@@ -1,7 +1,7 @@
 ﻿using HotelManagement.Infrastructure.Persistence.IRepositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace HotelManagement.Infrastructure.Persistence.Repositories
+namespace HotelManagement.Infrastructure.Persistence.Common
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

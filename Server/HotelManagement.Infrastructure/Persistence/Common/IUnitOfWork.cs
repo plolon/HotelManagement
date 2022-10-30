@@ -1,6 +1,6 @@
 ﻿using HotelManagement.Infrastructure.Persistence.IRepositories;
 
-namespace HotelManagement.Infrastructure.Persistence
+namespace HotelManagement.Infrastructure.Persistence.Common
 {
     public interface IUnitOfWork :IDisposable
     {

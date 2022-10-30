@@ -1,4 +1,5 @@
 ﻿using HotelManagement.Domain.Models;
+using HotelManagement.Infrastructure.Persistence.Common;
 using HotelManagement.Infrastructure.Persistence.IRepositories;
 using Microsoft.EntityFrameworkCore;
 
