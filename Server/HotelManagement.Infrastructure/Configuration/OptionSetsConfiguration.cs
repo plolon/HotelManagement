@@ -12,4 +12,11 @@ namespace HotelManagement.Infrastructure.Configuration
             builder.SeedTableWithEnumValues<RoomType, RoomTypeEnum>(@enum => @enum);
         }
     }
+    public class StatusConfiguration : IEntityTypeConfiguration<Status>
+    {
+        public void Configure(EntityTypeBuilder<Status> builder)
+        {
+            builder.SeedTableWithEnumValues<Status, StatusEnum>(@enum => @enum);
+        }
+    }
 }

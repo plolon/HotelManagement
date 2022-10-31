@@ -3,6 +3,7 @@ using System;
 using HotelManagement.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(HotelManagementDbContext))]
-    partial class HotelManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221031110701_AddBookingTable")]
+    partial class AddBookingTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.9");
@@ -232,28 +234,6 @@ namespace HotelManagement.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Statuses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 0,
-                            Name = "New"
-                        },
-                        new
-                        {
-                            Id = 1,
-                            Name = "Active"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Completed"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Canceled"
-                        });
                 });
 
             modelBuilder.Entity("HotelManagement.Domain.Models.Booking", b =>
