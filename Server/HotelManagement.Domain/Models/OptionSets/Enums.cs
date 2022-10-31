@@ -8,4 +8,12 @@
         Triple,
         Quad
     }
+
+    public enum StatusEnum
+    {
+        New,
+        Active,
+        Completed,
+        Canceled
+    }
 }
