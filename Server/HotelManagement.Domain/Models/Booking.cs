@@ -3,7 +3,7 @@ using HotelManagement.Domain.Models.OptionSets;
 
 namespace HotelManagement.Domain.Models
 {
-    public class Order : BaseDomainEntity
+    public class Booking : BaseDomainEntity
     {
         //TODO: Relation with User / Client
         public DateTime StartDate { get; set; }
