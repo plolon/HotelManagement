@@ -1,10 +1,12 @@
 ﻿using HotelManagement.Application.DTOs.HotelRoom;
 using HotelManagement.Application.Features.Queries.HotelRooms.Requests;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelManagement.Api.Controllers;
 
+[Authorize(Roles = "any")]
 [Route("api/[controller]")]
 [ApiController]
 public class HotelRoomsController : ControllerBase
