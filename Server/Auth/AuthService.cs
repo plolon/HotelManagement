@@ -8,28 +8,27 @@ using Auth.Repository;
 
 namespace Auth
 {
-    // TODO: Add role based authorization :)
     public class AuthService
     {
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly JwtSettings jwtSettings;
-        private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly JwtSettings _jwtSettings;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
         public AuthService(UserManager<ApplicationUser> userManager,
             IOptions<JwtSettings> jwtSettings,
             SignInManager<ApplicationUser> signInManager)
         {
-            this.jwtSettings = jwtSettings.Value;
-            this.userManager = userManager;
-            this.signInManager = signInManager;
+            this._jwtSettings = jwtSettings.Value;
+            this._userManager = userManager;
+            this._signInManager = signInManager;
         }
 
         public async Task<AuthResponse> Login(AuthRequest request)
         {
-            var user = await userManager.FindByEmailAsync(request.Email);
+            var user = await _userManager.FindByEmailAsync(request.Email);
             if (user == null)
                 throw new Exception($"User with {request.Email} not found.");
-            var result = await signInManager.PasswordSignInAsync(user.UserName,
+            var result = await _signInManager.PasswordSignInAsync(user.UserName,
                 request.Password, false, lockoutOnFailure: false);
 
             if (!result.Succeeded)
@@ -50,8 +49,8 @@ namespace Auth
 
         private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)
         {
-            IList<Claim> userClaims = await userManager.GetClaimsAsync(user);
-            IList<string> roles = await userManager.GetRolesAsync(user);
+            IList<Claim> userClaims = await _userManager.GetClaimsAsync(user);
+            IList<string> roles = await _userManager.GetRolesAsync(user);
             List<Claim> roleClaims = new List<Claim>();
             roles.ToList()
                 .ForEach((role) => roleClaims
@@ -67,16 +66,16 @@ namespace Auth
 
             var symmetricSecurityKey =
                 new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes(jwtSettings.Key));
+                    Encoding.UTF8.GetBytes(_jwtSettings.Key));
             var signingCredentials =
                 new SigningCredentials(symmetricSecurityKey,
                     SecurityAlgorithms.HmacSha256);
 
             var jwtToken = new JwtSecurityToken(
-                issuer: jwtSettings.Issuer,
-                audience: jwtSettings.Audience,
+                issuer: _jwtSettings.Issuer,
+                audience: _jwtSettings.Audience,
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(jwtSettings.DurationInMinutes),
+                expires: DateTime.Now.AddMinutes(_jwtSettings.DurationInMinutes),
                 signingCredentials: signingCredentials
             );
             return jwtToken;

@@ -19,7 +19,8 @@
 
     public enum UserRoleEnum
     {
-        Administraor,
+        SuperAdministrator,
+        Administrator,
         Premium,
         Gold,
         Silver,
