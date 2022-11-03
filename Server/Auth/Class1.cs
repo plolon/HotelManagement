@@ -11,10 +11,5 @@ namespace Auth
 {
     public static class IdentityServicesRegistration
     {
-
-    }
-
-    public class Class1
-    {
     }
 }

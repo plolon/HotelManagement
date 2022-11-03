@@ -16,4 +16,13 @@
         Completed,
         Canceled
     }
+
+    public enum UserRoleEnum
+    {
+        Administraor,
+        Premium,
+        Gold,
+        Silver,
+        Basic
+    }
 }
