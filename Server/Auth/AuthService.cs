@@ -23,6 +23,12 @@ namespace Auth
             this._signInManager = signInManager;
         }
 
+        // TODO: Add Registration method
+        // TODO: Add password hashing algorithm using System.Security.Cryptography;
+        // TODO: Including salting the password
+        // TODO: Potentially include peppering the password
+        // TODO: Add dummy users to the database in the configuration
+        
         public async Task<AuthResponse> Login(AuthRequest request)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
