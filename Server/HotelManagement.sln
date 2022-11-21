@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelManagement.Infrastruct
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelManagement.Application", "HotelManagement.Application\HotelManagement.Application.csproj", "{4A848F4D-C69B-452E-9295-1EFE98F36065}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth", "Auth\Auth.csproj", "{579979CC-3C19-4F1F-8D31-2CE75B8EA977}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4A848F4D-C69B-452E-9295-1EFE98F36065}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A848F4D-C69B-452E-9295-1EFE98F36065}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A848F4D-C69B-452E-9295-1EFE98F36065}.Release|Any CPU.Build.0 = Release|Any CPU
+		{579979CC-3C19-4F1F-8D31-2CE75B8EA977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{579979CC-3C19-4F1F-8D31-2CE75B8EA977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{579979CC-3C19-4F1F-8D31-2CE75B8EA977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{579979CC-3C19-4F1F-8D31-2CE75B8EA977}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
