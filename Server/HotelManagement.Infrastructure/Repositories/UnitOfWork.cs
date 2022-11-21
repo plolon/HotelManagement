@@ -1,6 +1,6 @@
-﻿using HotelManagement.Infrastructure.Persistence.IRepositories;
+﻿using HotelManagement.Domain.Repositories;
 
-namespace HotelManagement.Infrastructure.Persistence.Common
+namespace HotelManagement.Infrastructure.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -13,9 +13,9 @@ namespace HotelManagement.Infrastructure.Persistence.Common
             IHotelRoomRepository hotelRoomRepository)
         {
             _dbContext = dbContext;
-            this.Hotels = hotelRepository;
-            this.RoomTypes = roomTypeRepository;
-            this.HotelRooms = hotelRoomRepository;
+            Hotels = hotelRepository;
+            RoomTypes = roomTypeRepository;
+            HotelRooms = hotelRoomRepository;
         }
 
         public void Dispose()
@@ -32,5 +32,5 @@ namespace HotelManagement.Infrastructure.Persistence.Common
         public IHotelRepository Hotels { get; }
         public IRoomTypeRepository RoomTypes { get; }
         public IHotelRoomRepository HotelRooms { get; }
-    }   
+    }
 }

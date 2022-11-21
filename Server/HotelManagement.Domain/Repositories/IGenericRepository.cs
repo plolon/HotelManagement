@@ -1,4 +1,4 @@
-﻿namespace HotelManagement.Infrastructure.Persistence.Common
+﻿namespace HotelManagement.Domain.Repositories
 {
     public interface IGenericRepository<T> where T : class
     {

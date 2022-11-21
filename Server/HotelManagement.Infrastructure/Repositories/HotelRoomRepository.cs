@@ -1,11 +1,10 @@
 ﻿using HotelManagement.Domain.Models;
-using HotelManagement.Infrastructure.Persistence.Common;
-using HotelManagement.Infrastructure.Persistence.IRepositories;
+using HotelManagement.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace HotelManagement.Infrastructure.Persistence.Repositories
+namespace HotelManagement.Infrastructure.Repositories
 {
-    public class HotelRoomRepository: GenericRepository<HotelRoom>, IHotelRoomRepository
+    public class HotelRoomRepository : GenericRepository<HotelRoom>, IHotelRoomRepository
     {
         private readonly HotelManagementDbContext _dbContext;
 
@@ -27,5 +26,5 @@ namespace HotelManagement.Infrastructure.Persistence.Repositories
                 .Include(x => x.RoomType)
                 .FirstOrDefaultAsync();
         }
-    }   
+    }
 }
