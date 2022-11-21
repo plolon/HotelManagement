@@ -1,10 +1,12 @@
 ﻿using HotelManagement.Application.DTOs.HotelRoom;
 using HotelManagement.Application.Features.Queries.HotelRooms.Requests;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelManagement.Api.Controllers;
 
+[Authorize(Roles = "any")]
 [Route("api/[controller]")]
 [ApiController]
 public class HotelRoomsController : ControllerBase
@@ -17,11 +19,15 @@ public class HotelRoomsController : ControllerBase
     }
 
     // GET: api/<HotelRoomsController>
+    [Authorize(Roles =
+        "SuperAdministrator, Administrator, Premium, Gold, Silver, Basic")]
     [HttpGet]
     public async Task<ICollection<HotelRoomDto>> Get() =>
         await _mediator.Send(new GetAllHotelRoomsRequest());
 
     // GET: api/<HotelRoomsController>/id
+    [Authorize(Roles =
+        "SuperAdministrator, Administrator, Premium, Gold, Silver, Basic")]
     [HttpGet("{id}")]
     public async Task<HotelRoomDto> Get(int id) =>
         await _mediator.Send(new GetHotelRoomByIdRequest { Id = id });

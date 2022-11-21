@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace HotelManagement.Domain.Models
 {
     [Table("HotelRooms")]
-    public class HotelRoom :BaseDomainEntity
+    public class  HotelRoom :BaseDomainEntity
     {
         [StringLength(128)]
         public string Number { get; set; }
