@@ -13,5 +13,7 @@ namespace HotelManagement.Application.DTOs.Hotel
         {
             HotelRooms = new Collection<HotelRoomDto>();
         }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateModified { get; set; }
     }
 }
