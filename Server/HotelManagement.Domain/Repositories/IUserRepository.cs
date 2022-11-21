@@ -1,7 +1,6 @@
 using HotelManagement.Domain.Models;
-using HotelManagement.Infrastructure.Persistence.Common;
 
-namespace HotelManagement.Infrastructure.Persistence.IRepositories
+namespace HotelManagement.Domain.Repositories
 {
     public interface IUserRepository : IGenericRepository<User>
     {

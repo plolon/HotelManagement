@@ -1,7 +1,7 @@
-﻿using HotelManagement.Infrastructure.Persistence.IRepositories;
+﻿using HotelManagement.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace HotelManagement.Infrastructure.Persistence.Common
+namespace HotelManagement.Infrastructure.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
@@ -28,7 +28,8 @@ namespace HotelManagement.Infrastructure.Persistence.Common
         public async Task<bool> Delete(int id)
         {
             var entity = await _dbContext.Set<T>().FindAsync(id);
-            if (entity == null) {
+            if (entity == null)
+            {
                 return false;
             }
             _dbContext.Set<T>().Remove(entity);

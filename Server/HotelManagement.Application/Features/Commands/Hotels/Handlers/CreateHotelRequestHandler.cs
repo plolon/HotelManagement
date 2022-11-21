@@ -4,7 +4,7 @@ using HotelManagement.Application.Extensions;
 using HotelManagement.Application.Features.Commands.Hotels.Requests;
 using HotelManagement.Application.Validators;
 using HotelManagement.Domain.Models;
-using HotelManagement.Infrastructure.Persistence.Common;
+using HotelManagement.Domain.Repositories;
 using MediatR;
 
 namespace HotelManagement.Application.Features.Commands.Hotels.Handlers

@@ -1,5 +1,5 @@
 using HotelManagement.Application.Features.Commands.Hotels.Requests;
-using HotelManagement.Infrastructure.Persistence.Common;
+using HotelManagement.Domain.Repositories;
 using MediatR;
 
 namespace HotelManagement.Application.Features.Commands.Hotels.Handlers

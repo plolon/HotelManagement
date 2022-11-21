@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using HotelManagement.Application.DTOs.RoomType;
 using HotelManagement.Application.Features.Queries.RoomTypes.Requests;
-using HotelManagement.Infrastructure.Persistence.Common;
+using HotelManagement.Domain.Repositories;
 using MediatR;
 
 namespace HotelManagement.Application.Features.Queries.RoomTypes.Handlers
