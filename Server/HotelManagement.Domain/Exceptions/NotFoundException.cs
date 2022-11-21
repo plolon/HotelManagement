@@ -1,8 +1,8 @@
 ﻿namespace HotelManagement.Domain.Exceptions
 {
-    public class UserNotFoundException : ApplicationException
+    public class NotFoundException : ApplicationException
     {
-        public UserNotFoundException(string message) : base("Not Found", message)
+        public NotFoundException(string message) : base("Not Found", message)
         {
         }
     }
