@@ -33,7 +33,7 @@ namespace HotelManagement.Api.Controllers
             await _mediator.Send(new GetHotelByIdRequest { Id = id });
         
         // POST: api/<HotelsController>
-        [Authorize(Roles = "Administrator, SuperAdministrator")]
+        // [Authorize(Roles = "Administrator, SuperAdministrator")] // DEV
         [HttpPost]
         public async Task<HotelDto> Post([FromBody] SaveHotelDto saveHotelDto) => 
             await _mediator.Send(new CreateHotelRequest { SaveHotelDto = saveHotelDto });

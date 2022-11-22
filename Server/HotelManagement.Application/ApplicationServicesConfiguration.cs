@@ -1,6 +1,8 @@
 ﻿using HotelManagement.Application.Profiles;
 using MediatR;
 using System.Reflection;
+using Application.Behaviors;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HotelManagement.Application
@@ -11,6 +13,8 @@ namespace HotelManagement.Application
         {
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddValidatorsFromAssembly(typeof(ApplicationServicesConfiguration).Assembly);
             return services;
         }
     }

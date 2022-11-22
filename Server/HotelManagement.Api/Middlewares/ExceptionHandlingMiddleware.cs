@@ -1,11 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Text.Json;
+using HotelManagement.Application.Exceptions;
 using HotelManagement.Domain.Exceptions;
 using ApplicationException = HotelManagement.Domain.Exceptions.ApplicationException;
-using ValidationException = HotelManagement.Application.Exceptions.ValidationException;
 
 namespace HotelManagement.Api.Middlewares
 {
-    public class ExceptionHandlingMiddlewares : IMiddleware
+    public class ExceptionHandlingMiddleware : IMiddleware
     {
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
@@ -20,9 +20,20 @@ namespace HotelManagement.Api.Middlewares
             }
         }
 
-        private static async Task HandleException(HttpContext context, Exception e)
+        private static async Task HandleException(HttpContext httpContext, Exception e)
         {
-            var statusCode = GetStatusCode(e);
+            var code = GetStatusCode(e);
+            var response = new
+            {
+                title = GetTitle(e),
+                statusCode = code,
+                details = e.Message,
+                errors = GetErrors(e)
+            };
+
+            httpContext.Response.ContentType = "application/json";
+            httpContext.Response.StatusCode = code;
+            await httpContext.Response.WriteAsync(JsonSerializer.Serialize(response));
         }
 
         private static int GetStatusCode(Exception exception) =>
