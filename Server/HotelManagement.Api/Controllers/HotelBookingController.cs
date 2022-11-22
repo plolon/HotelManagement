@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using HotelManagement.Application.DTOs.Booking;
-using HotelManagement.Application.Features.Queries.HotelRooms.Requests;
+using HotelManagement.Application.Features.Queries.Bookings.Requests;
 
 namespace HotelManagement.Api.Controllers
 {
@@ -16,13 +16,13 @@ namespace HotelManagement.Api.Controllers
             _sender = sender;
         }
 
-    // GET: <BookingController>
-    [HttpGet]
-    public async Task<ICollection<BookingDto>> Get() => 
-        await _sender.Send(new GetAllBookings());
-    
-    [HttpPost]
-    public async Task<ICollection<BookingDto>> Post() => 
-        await _sender.Send(new CreateBooking()); 
+        // GET: <BookingController>
+        [HttpGet]
+        public async Task<BookingDto> Get() =>
+            await _sender.Send(new GetAllBookingsRequest());
+
+        [HttpPost]
+        public async Task<ICollection<BookingDto>> Post() =>
+            await _sender.Send(new CreateBookingRequest());
     }
 }

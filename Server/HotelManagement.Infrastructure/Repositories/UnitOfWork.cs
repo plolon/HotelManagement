@@ -32,5 +32,7 @@ namespace HotelManagement.Infrastructure.Repositories
         public IHotelRepository Hotels { get; }
         public IRoomTypeRepository RoomTypes { get; }
         public IHotelRoomRepository HotelRooms { get; }
+
+        public IBookingRepository Bookings { get; }
     }
 }
