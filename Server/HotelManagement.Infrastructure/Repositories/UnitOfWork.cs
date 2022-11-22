@@ -10,12 +10,14 @@ namespace HotelManagement.Infrastructure.Repositories
             HotelManagementDbContext dbContext,
             IHotelRepository hotelRepository,
             IRoomTypeRepository roomTypeRepository,
-            IHotelRoomRepository hotelRoomRepository)
+            IHotelRoomRepository hotelRoomRepository,
+            IBookingRepository bookingRepository)
         {
             _dbContext = dbContext;
             Hotels = hotelRepository;
             RoomTypes = roomTypeRepository;
             HotelRooms = hotelRoomRepository;
+            Bookings = bookingRepository;
         }
 
         public void Dispose()

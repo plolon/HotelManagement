@@ -25,6 +25,7 @@ namespace HotelManagement.Infrastructure
             services.AddScoped<IHotelRepository, HotelRepository>();
             services.AddScoped<IHotelRoomRepository, HotelRoomRepository>();
             services.AddScoped<IRoomTypeRepository, RoomTypeRepository>();
+            services.AddScoped<IBookingRepository, BookingRepository>();
 
             return services;
         }
