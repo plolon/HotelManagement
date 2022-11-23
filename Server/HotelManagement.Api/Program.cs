@@ -1,6 +1,7 @@
 using HotelManagement.Api.Extensions;
 using HotelManagement.Api.Middlewares;
 using HotelManagement.Application;
+using HotelManagement.Identity;
 using HotelManagement.Infrastructure;
 using Serilog;
 
@@ -10,12 +11,14 @@ builder.Host.UseSerilog((hostingContext, loggerConfiguration) => loggerConfigura
     .WriteTo.Console()
     .WriteTo.Seq("http://localhost:5341/"));
 
-builder.Services.RegisterInfrastructureServices(builder.Configuration);
+builder.Services.RegisterSwagger();
+
 builder.Services.RegisterApplicationServices();
+builder.Services.RegisterInfrastructureServices(builder.Configuration);
+builder.Services.ConfigureIdentityServices(builder.Configuration);
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.RegisterSwagger();
-builder.Services.AddAuthorization();
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 
 var app = builder.Build();
