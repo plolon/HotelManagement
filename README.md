@@ -6,7 +6,7 @@
     
     1. Remaining requests to CQRS by the schema (CreateHotel)
     2. Change response to IActionResult interface
-    3. Add logger to log the error stack trace
+    3. Add logging to file feature
     4. Add env flag to throw complete errors in dev env
     5. Add Background Events layer w/ notifications, etc.
 2. Domain
