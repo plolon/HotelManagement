@@ -15,7 +15,6 @@ namespace HotelManagement.Infrastructure
         public DbSet<RoomType> RoomTypes { get; set; }
         public DbSet<Booking> Booking { get; set; }
         public DbSet<Status> Status { get; set; }
-        public DbSet<HotelRoomBooking> HotelRoomBookings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

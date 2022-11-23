@@ -4,6 +4,7 @@ using HotelManagement.Application.Features.Queries.Hotels.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ILogger = Serilog.ILogger;
 
 namespace HotelManagement.Api.Controllers
 {
@@ -12,18 +13,23 @@ namespace HotelManagement.Api.Controllers
     public class HotelsController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILogger _logger;
 
-        public HotelsController(IMediator mediator)
+        public HotelsController(IMediator mediator, ILogger logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
         
         // GET: api/<HotelsController>
-        [Authorize(Roles =
-            "SuperAdministrator, Administrator, Premium, Gold, Silver, Basic")]
+        // [Authorize(Roles =
+        //     "SuperAdministrator, Administrator, Premium, Gold, Silver, Basic")]
         [HttpGet]
-        public async Task<ICollection<HotelDto>> Get() => 
-            await _mediator.Send(new GetAllHotelsRequest());
+        public async Task<ICollection<HotelDto>> Get()
+        { 
+            _logger.Debug("HotelsController Post start");
+            return await _mediator.Send(new GetAllHotelsRequest());
+        }
         
         // GET: api/<HotelsController>/id
         [Authorize(Roles =
@@ -35,8 +41,10 @@ namespace HotelManagement.Api.Controllers
         // POST: api/<HotelsController>
         // [Authorize(Roles = "Administrator, SuperAdministrator")] // DEV
         [HttpPost]
-        public async Task<HotelDto> Post([FromBody] SaveHotelDto saveHotelDto) => 
-            await _mediator.Send(new CreateHotelRequest { SaveHotelDto = saveHotelDto });
+        public async Task<HotelDto> Post([FromBody] SaveHotelDto saveHotelDto)
+        {
+            return await _mediator.Send(new CreateHotelRequest { SaveHotelDto = saveHotelDto });
+        }
 
         // PUT: api/<HotelsController>/id
         [Authorize(Roles = "Administrator, SuperAdministrator")]
