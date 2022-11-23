@@ -22,8 +22,8 @@ namespace HotelManagement.Api.Controllers
         }
         
         // GET: api/<HotelsController>
-        // [Authorize(Roles =
-        //     "SuperAdministrator, Administrator, Premium, Gold, Silver, Basic")]
+        [Authorize(Roles =
+            "SuperAdministrator, Administrator, Premium, Gold, Silver, Basic")]
         [HttpGet]
         public async Task<ICollection<HotelDto>> Get()
         { 
@@ -39,7 +39,7 @@ namespace HotelManagement.Api.Controllers
             await _mediator.Send(new GetHotelByIdRequest { Id = id });
         
         // POST: api/<HotelsController>
-        // [Authorize(Roles = "Administrator, SuperAdministrator")] // DEV
+        [Authorize(Roles = "Administrator, SuperAdministrator")] // DEV
         [HttpPost]
         public async Task<HotelDto> Post([FromBody] SaveHotelDto saveHotelDto)
         {

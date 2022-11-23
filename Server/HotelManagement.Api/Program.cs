@@ -1,3 +1,4 @@
+using HotelManagement.Api.Extensions;
 using HotelManagement.Api.Middlewares;
 using HotelManagement.Application;
 using HotelManagement.Infrastructure;
@@ -13,7 +14,7 @@ builder.Services.RegisterInfrastructureServices(builder.Configuration);
 builder.Services.RegisterApplicationServices();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.RegisterSwagger();
 builder.Services.AddAuthorization();
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 
@@ -22,7 +23,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HotelManagement.Api v1"));
 }
 
 app.UseSerilogRequestLogging();
