@@ -15,11 +15,5 @@ namespace HotelManagement.Domain.Models
         public virtual RoomType RoomType { get; set; }
         public int HotelId { get; set; }
         public virtual Hotel Hotel { get; set; }
-        public virtual ICollection<HotelRoomBooking> Bookings { get; set; }
-
-        public HotelRoom()
-        {
-            Bookings = new Collection<HotelRoomBooking>();
-        }
     }
 }

@@ -2,11 +2,18 @@
 using HotelManagement.Application.Exceptions;
 using HotelManagement.Domain.Exceptions;
 using ApplicationException = HotelManagement.Domain.Exceptions.ApplicationException;
+using ILogger = Serilog.ILogger;
 
 namespace HotelManagement.Api.Middlewares
 {
     public class ExceptionHandlingMiddleware : IMiddleware
     {
+        private readonly ILogger _logger;
+
+        public ExceptionHandlingMiddleware(ILogger logger)
+        {
+            _logger = logger;
+        }
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
             try
@@ -15,7 +22,7 @@ namespace HotelManagement.Api.Middlewares
             }
             catch (Exception e)
             {
-                //TODO Add Logger and log stack trace
+                _logger.Error(e.StackTrace);
                 await HandleException(context, e);
             }
         }

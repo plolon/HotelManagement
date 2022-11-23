@@ -1,8 +1,13 @@
 using HotelManagement.Api.Middlewares;
 using HotelManagement.Application;
 using HotelManagement.Infrastructure;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration    //TODO: Before deploy move credentials to IOptions and add logging to file
+    .WriteTo.Console()
+    .WriteTo.Seq("http://localhost:5341/"));
 
 builder.Services.RegisterInfrastructureServices(builder.Configuration);
 builder.Services.RegisterApplicationServices();
@@ -19,6 +24,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseSerilogRequestLogging();
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
