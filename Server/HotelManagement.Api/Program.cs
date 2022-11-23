@@ -20,6 +20,8 @@ builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 
 var app = builder.Build();
 
+app.UseAuthentication();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

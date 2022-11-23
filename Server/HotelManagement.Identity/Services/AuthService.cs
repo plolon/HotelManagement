@@ -1,14 +1,16 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Auth.Repository;
+using HotelManagement.Application.Identity;
+using HotelManagement.Application.Identity.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 
-namespace Auth
+namespace HotelManagement.Identity.Services
 {
-    public class AuthService
+    public class AuthService : IAuthService
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly JwtSettings _jwtSettings;
@@ -29,7 +31,7 @@ namespace Auth
         // TODO: Potentially include peppering the password
         // TODO: Add dummy users to the database in the configuration
         
-        public async Task<AuthResponse> Login(AuthRequest request)
+        public async Task<IAuthResponse> Login(IAuthRequest request)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
             if (user == null)
@@ -51,6 +53,11 @@ namespace Auth
                 UserName = user.UserName
             };
             return response;
+        }
+
+        public async Task<RegistrationResponse> Register(RegistrationResponse request)
+        {
+            throw new NotImplementedException();
         }
 
         private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)

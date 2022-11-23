@@ -1,4 +1,4 @@
-namespace HotelManagement.Infrastructure.Persistence.IServices
+namespace HotelManagement.Application.Identity
 {
     public interface IAuthRequest
     {

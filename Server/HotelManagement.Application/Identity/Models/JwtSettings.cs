@@ -1,4 +1,4 @@
-namespace Auth.Repository
+namespace HotelManagement.Application.Identity.Models
 {
     public class JwtSettings
     {

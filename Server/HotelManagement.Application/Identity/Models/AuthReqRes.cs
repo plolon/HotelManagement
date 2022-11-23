@@ -1,6 +1,6 @@
-namespace Auth
+namespace HotelManagement.Application.Identity.Models
 {
-    public class AuthResponse
+    public class AuthResponse : IAuthResponse
     {
         public string Id { get; set; }
         public string UserName { get; set; }
@@ -8,7 +8,7 @@ namespace Auth
         public string Token { get; set; }
     }
 
-    public class AuthRequest
+    public class AuthRequest : IAuthRequest
     {
         public string Email { get; set; }
         public string Password { get; set; }
