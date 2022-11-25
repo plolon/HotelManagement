@@ -2,8 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Auth.Repository;
-using HotelManagement.Application.Identity;
-using HotelManagement.Application.Identity.Models;
+using HotelManagement.Application.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -25,13 +24,7 @@ namespace HotelManagement.Identity.Services
             this._signInManager = signInManager;
         }
 
-        // TODO: Add Registration method
-        // TODO: Add password hashing algorithm using System.Security.Cryptography;
-        // TODO: Including salting the password
-        // TODO: Potentially include peppering the password
-        // TODO: Add dummy users to the database in the configuration
-        
-        public async Task<IAuthResponse> Login(IAuthRequest request)
+        public async Task<AuthResponse> Login(AuthRequest request)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
             if (user == null)

@@ -18,7 +18,7 @@ namespace HotelManagement.Api.Extensions
                         Scheme = "Bearer"
                     });
                 c.AddSecurityRequirement(
-                    new OpenApiSecurityRequirement()
+                    new OpenApiSecurityRequirement
                     {
                         {
                             new OpenApiSecurityScheme

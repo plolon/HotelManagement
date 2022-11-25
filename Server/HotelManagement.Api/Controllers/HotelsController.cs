@@ -9,6 +9,7 @@ using ILogger = Serilog.ILogger;
 namespace HotelManagement.Api.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class HotelsController : ControllerBase
     {
@@ -22,8 +23,8 @@ namespace HotelManagement.Api.Controllers
         }
         
         // GET: api/<HotelsController>
-        [Authorize(Roles =
-            "SuperAdministrator, Administrator, Premium, Gold, Silver, Basic")]
+        //[Authorize(Roles =
+        //    "SuperAdministrator, Administrator, Premium, Gold, Silver, Basic")]
         [HttpGet]
         public async Task<ICollection<HotelDto>> Get()
         { 
@@ -32,14 +33,14 @@ namespace HotelManagement.Api.Controllers
         }
         
         // GET: api/<HotelsController>/id
-        [Authorize(Roles =
-            "SuperAdministrator, Administrator, Premium, Gold, Silver, Basic")]
+        //[Authorize(Roles =
+        //    "SuperAdministrator, Administrator, Premium, Gold, Silver, Basic")]
         [HttpGet("{id}")]
         public async Task<HotelDto> Get(int id) => 
             await _mediator.Send(new GetHotelByIdRequest { Id = id });
         
         // POST: api/<HotelsController>
-        [Authorize(Roles = "Administrator, SuperAdministrator")] // DEV
+        //[Authorize(Roles = "Administrator, SuperAdministrator")] // DEV
         [HttpPost]
         public async Task<HotelDto> Post([FromBody] SaveHotelDto saveHotelDto)
         {
@@ -47,13 +48,13 @@ namespace HotelManagement.Api.Controllers
         }
 
         // PUT: api/<HotelsController>/id
-        [Authorize(Roles = "Administrator, SuperAdministrator")]
+        //[Authorize(Roles = "Administrator, SuperAdministrator")]
         [HttpPut("{id}")]
         public async Task<HotelDto> Update([FromBody] SaveHotelDto updateHotelDto, int id) => 
             await _mediator.Send(new UpdateHotelRequest { UpdateHotelDto = updateHotelDto, Id = id });
         
         // DELETE: api/<HotelsController>/id
-        [Authorize(Roles = "SuperAdministrator")]
+        //[Authorize(Roles = "SuperAdministrator")]
         [HttpDelete("{id}")]
         public async Task<bool> Delete(int id) => 
             await _mediator.Send(new DeleteHotelRequest { Id = id });

@@ -19,8 +19,4 @@
     <ProjectReference Include="..\HotelManagement.Domain\HotelManagement.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Persistence\IServices" />
-  </ItemGroup>
-
 </Project>

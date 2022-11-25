@@ -1,5 +1,6 @@
 ﻿using HotelManagement.Domain.Repositories;
-using HotelManagement.Infrastructure.Repositories;
+using HotelManagement.Infrastructure.Persistence;
+using HotelManagement.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
