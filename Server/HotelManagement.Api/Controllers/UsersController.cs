@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HotelManagement.Api.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class UsersController: ControllerBase
     {
         private readonly IAuthService _authService;
@@ -13,6 +15,8 @@ namespace HotelManagement.Api.Controllers
             _authService = authService;
         }
 
+        // POST: api/<UsersController>/login
+        [HttpPost("login")]
         public async Task<IActionResult> Login(AuthRequest request) => Ok(await _authService.Login(request));
         
     }
