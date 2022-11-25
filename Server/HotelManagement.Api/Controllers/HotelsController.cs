@@ -28,7 +28,8 @@ namespace HotelManagement.Api.Controllers
         [HttpGet]
         public async Task<ICollection<HotelDto>> Get()
         { 
-            _logger.Debug("HotelsController Post start");
+            _logger.Information("HotelsController GET start");
+            _logger.Information("{}");
             return await _mediator.Send(new GetAllHotelsRequest());
         }
         
