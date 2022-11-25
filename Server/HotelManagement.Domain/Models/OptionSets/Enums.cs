@@ -16,14 +16,4 @@
         Completed,
         Canceled
     }
-
-    public enum UserRoleEnum
-    {
-        SuperAdministrator,
-        Administrator,
-        Premium,
-        Gold,
-        Silver,
-        Basic
-    }
 }
