@@ -10,12 +10,12 @@ using HotelManagement.Domain.Repositories;
 
 namespace HotelManagement.Application.Features.Commands.Hotels.Handlers
 {
-    public class CreateHotelRequestHandler : ICommandHandler<CreateHotelRequest, HotelDto>
+    public class CreateHotelHandler : ICommandHandler<CreateHotelRequest, HotelDto>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public CreateHotelRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public CreateHotelHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
