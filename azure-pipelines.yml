@@ -11,9 +11,10 @@ steps:
 
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
-
-- task: CmdLine@2
-  displayName: 'List files'
-  inputs:
-    script: |
-      for %%f in ( "$(Build.ArtifactStagingDirectory)\*" ) do @echo %%f
+  
+- powershell: |
+   Write-Host "Show all folder content"
+   Get-ChildItem -Path $(Agent.WorkFolder)\*.* -Recurse -Force
+  errorActionPreference: continue
+  displayName: 'PowerShell Script List folder structure'
+  continueOnError: true
