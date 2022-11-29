@@ -8,5 +8,11 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: test
+    projects: '**/*UnitTests/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
 - script: dotnet build server --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
