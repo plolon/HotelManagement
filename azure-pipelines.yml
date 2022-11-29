@@ -2,15 +2,11 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 variables:
   buildConfiguration: 'Release'
 
 steps:
-- powershell: |
-   Write-Host "Show all folder content"
-   Get-ChildItem -Path $(Agent.WorkFolder)\*.* -Recurse -Force
-  errorActionPreference: continue
-  displayName: 'PowerShell Script List folder structure'
-  continueOnError: true
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
