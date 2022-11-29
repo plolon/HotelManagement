@@ -8,11 +8,29 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: UseDotNet@2
+  inputs:
+    version: '6.x'
+    includePreviewVersions: true
+
 - task: DotNetCoreCLI@2
+  displayName: 'dotnet test'
   inputs:
     command: test
     projects: '**/*UnitTests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
-- script: dotnet build server --configuration $(buildConfiguration)
+- script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+  inputs:
+    command: publish
+    publishWebProjects: false
+    projects: 'HotelManagement.Api/HotelManagement.Api.csproj'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'publish artifacts'
