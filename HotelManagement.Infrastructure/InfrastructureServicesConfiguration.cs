@@ -13,7 +13,7 @@ namespace HotelManagement.Infrastructure
             IConfiguration configuration)
         {
             services.AddDbContext<HotelManagementDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("HotelManagementApi_Prod")));
+                options.UseSqlServer(configuration["Data:hotelmanagement-db:ConnectionString"]));
             services.RegisterRepositories();
 
             return services;
