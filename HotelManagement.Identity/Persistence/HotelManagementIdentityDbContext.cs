@@ -1,7 +1,4 @@
-﻿using Auth.Repository;
-using HotelManagement.Infrastructure.Configuration;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelManagement.Identity.Persistence
@@ -17,9 +14,9 @@ namespace HotelManagement.Identity.Persistence
         {
             base.OnModelCreating(builder);
 
-            builder.ApplyConfiguration(new RoleConfiguration());
-            builder.ApplyConfiguration(new UserConfiguration());
-            builder.ApplyConfiguration(new UserRoleConfiguration());
+            //builder.ApplyConfiguration(new RoleConfiguration());
+            //builder.ApplyConfiguration(new UserConfiguration());
+            //builder.ApplyConfiguration(new UserRoleConfiguration());
         }
     }
 }

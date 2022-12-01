@@ -1,5 +1,5 @@
-﻿using Auth.Repository;
-using HotelManagement.Application.Models;
+﻿using HotelManagement.Application.Models;
+using HotelManagement.Domain.Models;
 using HotelManagement.Identity.Persistence;
 using HotelManagement.Identity.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -19,9 +19,9 @@ namespace HotelManagement.Identity
         {
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
-            services.AddDbContext<HotelManagementIdentityDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("HotelManagementIdentity"),
-                    b => b.MigrationsAssembly(typeof(HotelManagementIdentityDbContext).Assembly.FullName)));
+            //services.AddDbContext<HotelManagementIdentityDbContext>(options =>
+            //    options.UseSqlServer(configuration.GetConnectionString("HotelManagementIdentity"),
+            //        b => b.MigrationsAssembly(typeof(HotelManagementIdentityDbContext).Assembly.FullName)));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<HotelManagementIdentityDbContext>()
