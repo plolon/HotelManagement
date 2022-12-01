@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace HotelManagement.Infrastructure.Configuration
+namespace HotelManagement.Infrastructure.Persistence.Configuration.Identity
 {
     public class RoleConfiguration : IEntityTypeConfiguration<IdentityRole>
     {

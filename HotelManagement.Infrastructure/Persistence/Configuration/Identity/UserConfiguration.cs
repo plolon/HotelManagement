@@ -1,9 +1,9 @@
-using Auth.Repository;
+using HotelManagement.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace HotelManagement.Infrastructure.Configuration
+namespace HotelManagement.Infrastructure.Persistence.Configuration.Identity
 {
     public class UserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {

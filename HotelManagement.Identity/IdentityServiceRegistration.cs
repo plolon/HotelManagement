@@ -1,15 +1,13 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using HotelManagement.Application.Models;
+using HotelManagement.Domain.Models;
+using HotelManagement.Identity.Services;
+using HotelManagement.Infrastructure.Persistence;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Auth.Repository;
-using HotelManagement.Application.Models;
-using HotelManagement.Identity.Persistence;
-using HotelManagement.Identity.Services;
-using HotelManagement.Infrastructure.Persistence;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 namespace HotelManagement.Identity
 {
@@ -20,12 +18,8 @@ namespace HotelManagement.Identity
         {
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
-            services.AddDbContext<HotelManagementIdentityDbContext>(options =>
-                options.UseSqlite(configuration.GetConnectionString("Identity"),
-                    b => b.MigrationsAssembly(typeof(HotelManagementIdentityDbContext).Assembly.FullName)));
-
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<HotelManagementIdentityDbContext>()
+                .AddEntityFrameworkStores<HotelManagementDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddTransient<IAuthService, AuthService>();

@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Auth.Repository
+namespace HotelManagement.Domain.Models
 {
+    [Table("ApplicationUsers")]
     public class ApplicationUser : IdentityUser
     {
         public string FirstName { get; set; }

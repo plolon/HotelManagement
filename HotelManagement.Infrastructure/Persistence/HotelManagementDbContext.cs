@@ -1,11 +1,12 @@
 ﻿using HotelManagement.Domain.Models;
 using HotelManagement.Domain.Models.Common;
 using HotelManagement.Domain.Models.OptionSets;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelManagement.Infrastructure.Persistence
 {
-    public class HotelManagementDbContext : DbContext
+    public class HotelManagementDbContext : IdentityDbContext
     {
         public HotelManagementDbContext(DbContextOptions<HotelManagementDbContext> options) : base(options) { }
 
@@ -14,9 +15,12 @@ namespace HotelManagement.Infrastructure.Persistence
         public DbSet<RoomType> RoomTypes { get; set; }
         public DbSet<Booking> Booking { get; set; }
         public DbSet<Status> Status { get; set; }
+        public DbSet<ApplicationUser> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(HotelManagementDbContext).Assembly);
         }
 
