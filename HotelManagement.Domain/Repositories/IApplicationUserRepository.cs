@@ -4,6 +4,5 @@ namespace HotelManagement.Domain.Repositories
 {
     public interface IApplicationUserRepository: IGenericRepository<ApplicationUser>
     {
-        Task<ApplicationUser> Add(data)
     }
 }

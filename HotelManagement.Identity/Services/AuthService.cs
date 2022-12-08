@@ -22,12 +22,15 @@ namespace HotelManagement.Identity.Services
         public AuthService(UserManager<ApplicationUser> userManager,
             IOptions<JwtSettings> jwtSettings,
             SignInManager<ApplicationUser> signInManager,
-            IMapper mapper)
+            IMapper mapper,
+            IUnitOfWork _unitOfWork
+            )
         {
             this._jwtSettings = jwtSettings.Value;
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._mapper = mapper;
+            this._unitOfWork = _unitOfWork;
         }
 
         public async Task<AuthResponse> Login(AuthRequest request)
@@ -54,7 +57,7 @@ namespace HotelManagement.Identity.Services
             return response;
         }
 
-        public async Task<RegistrationResponse> Register(RegistrationRequest request)
+        public async Task<ApplicationUser> Register(RegistrationRequest request)
         {
             var isUserExists = await _userManager.FindByEmailAsync(request.Email);
 
@@ -67,7 +70,7 @@ namespace HotelManagement.Identity.Services
             
             await _unitOfWork.Complete();
 
-            return createdUser.Id; 
+            return createdUser; 
         }
 
         private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)
