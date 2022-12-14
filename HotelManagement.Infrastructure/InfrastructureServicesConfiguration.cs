@@ -23,6 +23,7 @@ namespace HotelManagement.Infrastructure
         private static IServiceCollection RegisterRepositories(this IServiceCollection services)
         {
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>(); 
             services.AddScoped<IHotelRepository, HotelRepository>();
             services.AddScoped<IHotelRoomRepository, HotelRoomRepository>();
             services.AddScoped<IRoomTypeRepository, RoomTypeRepository>();

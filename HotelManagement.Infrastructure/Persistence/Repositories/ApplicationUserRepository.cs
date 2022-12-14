@@ -1,6 +1,5 @@
 using HotelManagement.Domain.Models;
 using HotelManagement.Domain.Repositories;
-using Microsoft.EntityFrameworkCore;
 
 namespace HotelManagement.Infrastructure.Persistence.Repositories 
 {
@@ -9,6 +8,7 @@ namespace HotelManagement.Infrastructure.Persistence.Repositories
         private readonly HotelManagementDbContext _dbContext;
         public ApplicationUserRepository(HotelManagementDbContext dbContext) : base(dbContext)
         {
+            _dbContext = dbContext;
         }
     }
 }
