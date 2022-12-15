@@ -4,7 +4,7 @@
 
 1. Application/API:
     
-    1. Remaining requests to CQRS by the schema (CreateHotel)
+    1. Remaining requests to CQRS by the schema (All Create commands)
     2. Change response to IActionResult interface
     3. Add logging to file feature
     4. Add env flag to throw complete errors in dev env
@@ -18,9 +18,4 @@
     1. Change data annotations to FluentAPI
 4. Authorization
 
-    1. Add Registration method to AuthService
-    2. Add password hashing algorithm to user creation and cred. checking
-    3. Add dummy users to the database in the configuration ^^
-5. Swagger
-
-    1. Add authorization methods to Swagger :muscle: :watermelon:
+    1. Add password hashing algorithm to user creation
