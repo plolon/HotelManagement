@@ -64,6 +64,8 @@ namespace HotelManagement.Identity.Services
             if (isUserExists == null)
                 throw new Exception("User with this email already exists");
             
+            Console.WriteLine("Still running just fine");
+
             var newUser = _mapper.Map<ApplicationUser>(request);
 
             var createdUser = await _unitOfWork.ApplicationUser.Add(newUser);
