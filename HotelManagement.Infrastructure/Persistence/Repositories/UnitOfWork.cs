@@ -11,13 +11,15 @@ namespace HotelManagement.Infrastructure.Persistence.Repositories
             IHotelRepository hotelRepository,
             IRoomTypeRepository roomTypeRepository,
             IHotelRoomRepository hotelRoomRepository,
-            IBookingRepository bookingRepository)
+            IBookingRepository bookingRepository,
+            IApplicationUserRepository applicationUserRepository)
         {
             _dbContext = dbContext;
             Hotels = hotelRepository;
             RoomTypes = roomTypeRepository;
             HotelRooms = hotelRoomRepository;
             Bookings = bookingRepository;
+            ApplicationUser = applicationUserRepository;
         }
 
         public void Dispose()
@@ -34,7 +36,7 @@ namespace HotelManagement.Infrastructure.Persistence.Repositories
         public IHotelRepository Hotels { get; }
         public IRoomTypeRepository RoomTypes { get; }
         public IHotelRoomRepository HotelRooms { get; }
-
+        public IApplicationUserRepository ApplicationUser { get; }
         public IBookingRepository Bookings { get; }
     }
 }

@@ -18,6 +18,9 @@ namespace HotelManagement.Api.Controllers
         // POST: api/<UsersController>/login
         [HttpPost("login")]
         public async Task<IActionResult> Login(AuthRequest request) => Ok(await _authService.Login(request));
-        
+
+       [HttpPost("register")]
+       public async Task<IActionResult> Register(RegistrationRequest request) => Ok(await _authService.Register(request)); 
     }
 }
+

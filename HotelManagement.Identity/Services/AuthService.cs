@@ -6,6 +6,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using HotelManagement.Domain.Repositories;
+using AutoMapper;
 
 namespace HotelManagement.Identity.Services
 {
@@ -13,15 +15,22 @@ namespace HotelManagement.Identity.Services
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly JwtSettings _jwtSettings;
+        private readonly IMapper _mapper;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IUnitOfWork _unitOfWork;
 
         public AuthService(UserManager<ApplicationUser> userManager,
             IOptions<JwtSettings> jwtSettings,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            IMapper mapper,
+            IUnitOfWork _unitOfWork
+            )
         {
             this._jwtSettings = jwtSettings.Value;
             this._userManager = userManager;
             this._signInManager = signInManager;
+            this._mapper = mapper;
+            this._unitOfWork = _unitOfWork;
         }
 
         public async Task<AuthResponse> Login(AuthRequest request)
@@ -48,9 +57,22 @@ namespace HotelManagement.Identity.Services
             return response;
         }
 
-        public async Task<RegistrationResponse> Register(RegistrationResponse request)
+        public async Task<ApplicationUser> Register(RegistrationRequest request)
         {
-            throw new NotImplementedException();
+            var isUserExists = await _userManager.FindByEmailAsync(request.Email);
+
+            if (isUserExists == null)
+                throw new Exception("User with this email already exists");
+            
+            Console.WriteLine("Still running just fine");
+
+            var newUser = _mapper.Map<ApplicationUser>(request);
+
+            var createdUser = await _unitOfWork.ApplicationUser.Add(newUser);
+            
+            await _unitOfWork.Complete();
+
+            return createdUser; 
         }
 
         private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)
