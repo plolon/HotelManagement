@@ -28,19 +28,19 @@ namespace HotelManagement.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<int>("HotelRoomId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
@@ -70,10 +70,10 @@ namespace HotelManagement.Infrastructure.Migrations
                         .HasColumnType("nvarchar(128)");
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -118,10 +118,10 @@ namespace HotelManagement.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<int>("HotelId")
                         .HasColumnType("int");
