@@ -12,7 +12,7 @@ namespace HotelManagement.Domain.Models
         public string NormalizedEmail { get; set; }
         public string UserName { get; set; }
         public string NormalizedUserName { get; set;}
-        public string Password { get; set; }
+        public string PasswordHash { get; set; }
         public bool EmailConfirmed { get; set; }
     }
 }

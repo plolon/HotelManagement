@@ -63,11 +63,13 @@ namespace HotelManagement.Identity.Services
             
             if (isUserExists != null)
                 throw new Exception("User with this email already exists");
-            
-            Console.WriteLine("Still running just fine");
 
             var newUser = _mapper.Map<ApplicationUser>(request);
 
+            var hasher = new PasswordHasher<ApplicationUser>();
+
+            newUser.PasswordHash = hasher.HashPassword(null, newUser.PasswordHash);
+            
             var createdUser = await _unitOfWork.ApplicationUser.Add(newUser);
             
             await _unitOfWork.Complete();

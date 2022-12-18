@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(HotelManagementDbContext))]
-    [Migration("20221218172938_Dupa")]
-    partial class Dupa
+    [Migration("20221218180913_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -288,21 +288,21 @@ namespace HotelManagement.Infrastructure.Migrations
                         new
                         {
                             Id = "a986fb26-1e37-49f8-b7c6-363d5b1be4b9",
-                            ConcurrencyStamp = "93a7c402-8815-4de2-a3d2-212f305f3368",
+                            ConcurrencyStamp = "a5ec8c70-3e7e-45c7-a124-59019353662f",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "f94000ea-05fe-43da-a5d3-64b2d646c9dc",
-                            ConcurrencyStamp = "e6aa79ef-c868-402c-81be-6253176728ab",
+                            ConcurrencyStamp = "f228e24a-d01c-46cc-83bb-ca6188e9c6b9",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
                             Id = "b693c6bd-3b96-4403-ad5c-f3c773d504d9",
-                            ConcurrencyStamp = "718d1735-4f0a-4b7f-91cb-797b24334e28",
+                            ConcurrencyStamp = "03eb613c-43f3-479d-90ca-097841cc9cf5",
                             Name = "Guest",
                             NormalizedName = "GUEST"
                         });
@@ -503,10 +503,6 @@ namespace HotelManagement.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.ToTable("ApplicationUsers");
 
                     b.HasData(
@@ -514,43 +510,40 @@ namespace HotelManagement.Infrastructure.Migrations
                         {
                             Id = "d76c6509-a64a-4c53-a650-1ab645b7dab9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3fc47ca2-6767-4bd6-8cee-afb2a8409511",
+                            ConcurrencyStamp = "09f7c159-e210-4524-8f03-886bea09e59c",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "dc4ebf6d-8ce2-4bc6-877a-98a6767244cc",
+                            SecurityStamp = "fdad3e9c-ba68-4a4d-95e9-b6661afa5fb6",
                             TwoFactorEnabled = false,
                             FirstName = "System",
-                            LastName = "Admin",
-                            Password = "AQAAAAEAACcQAAAAEB5D/rQNYefLgFCwZB6nabvvLTX1M+ouX80dkUZQRTVwnXI6VpWx/rnhz769XUwIhg=="
+                            LastName = "Admin"
                         },
                         new
                         {
                             Id = "182f77d7-964e-468a-8c13-8c0118287ca3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c61452d5-77d3-43cc-af2f-e48f5d24a555",
+                            ConcurrencyStamp = "74d3193e-ca93-44a7-a233-22d6ea62801f",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "495ba7c1-97da-47e1-a8f7-ff36da30240b",
+                            SecurityStamp = "0b98d2f3-d34e-4b6e-b0c6-653bc4ff2462",
                             TwoFactorEnabled = false,
                             FirstName = "System",
-                            LastName = "Employee",
-                            Password = "AQAAAAEAACcQAAAAEB3ioLe5fEfrNNhtn9jREg8goMdrXzk4GMBn13GoaU0Xp8d9kZ6QN94ZOkDF5LkWYQ=="
+                            LastName = "Employee"
                         },
                         new
                         {
                             Id = "7f5923af-d1b4-41ce-8db8-cef9863ac90b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e1857af6-7a71-4605-bd55-599bd0af4956",
+                            ConcurrencyStamp = "1cc95a66-4329-4c7a-b39a-b0dbd3570c07",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e5e44b88-516d-484b-bbd9-decb01f6a567",
+                            SecurityStamp = "3fdc3662-fb35-4a32-bf4b-477394ec32b6",
                             TwoFactorEnabled = false,
                             FirstName = "System",
-                            LastName = "User",
-                            Password = "AQAAAAEAACcQAAAAEOWQEczjnURB2C1J03NVSFihZMGX8vI6roBUi5Lk5Jk4kJu0/ezGcF/CoCND4UxjXw=="
+                            LastName = "User"
                         });
                 });
 

@@ -12,7 +12,7 @@ namespace HotelManagement.Application.Profiles
                 .ForMember(appUsr => appUsr.FirstName, opt => opt.MapFrom(regReq => regReq.FirstName))
                 .ForMember(appUsr => appUsr.LastName, opt => opt.MapFrom(regReq => regReq.LastName))
                 .ForMember( appUsr => appUsr.UserName, opt => opt.MapFrom(regReq => regReq.UserName))
-                .ForMember( appUsr => appUsr.Password, opt => opt.MapFrom(regReq => regReq.Password))
+                .ForMember( appUsr => appUsr.PasswordHash, opt => opt.MapFrom(regReq => regReq.PasswordHash))
                 .ForMember( appUsr => appUsr.NormalizedEmail, opt => opt.MapFrom( regReq => regReq.Email.ToUpper()))
                 .ForMember(appUsr => appUsr.NormalizedUserName, opt => opt.MapFrom(regReq => regReq.UserName.ToUpper()));
         }

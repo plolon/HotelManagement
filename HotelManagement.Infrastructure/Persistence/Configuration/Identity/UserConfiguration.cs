@@ -19,7 +19,7 @@ namespace HotelManagement.Infrastructure.Persistence.Configuration.Identity
                     LastName = "Admin",
                     UserName = "admin@localhost.pl",
                     NormalizedUserName = "ADMIN@LOCALHOST.PL",
-                    Password = hasher.HashPassword(null, "insideyouaretwowolves"),
+                    PasswordHash = hasher.HashPassword(null, "insideyouaretwowolves"),
                     EmailConfirmed = true
                 },
                 new ApplicationUser
@@ -31,7 +31,7 @@ namespace HotelManagement.Infrastructure.Persistence.Configuration.Identity
                     LastName = "Employee",
                     UserName = "employee@localhost.pl",
                     NormalizedUserName = "EMPLOYEE@LOCALHOST.PL",
-                    Password = hasher.HashPassword(null, "oneisgay"),
+                    PasswordHash = hasher.HashPassword(null, "oneisgay"),
                     EmailConfirmed = true
                 },
                 new ApplicationUser
@@ -43,7 +43,7 @@ namespace HotelManagement.Infrastructure.Persistence.Configuration.Identity
                     LastName = "User",
                     UserName = "user@localhost.pl",
                     NormalizedUserName = "USER@LOCALHOST.PL",
-                    Password = hasher.HashPassword(null, "otheroneisgaytoo"),
+                    PasswordHash = hasher.HashPassword(null, "otheroneisgaytoo"),
                     EmailConfirmed = true
                 }
             );
