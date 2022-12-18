@@ -60,8 +60,8 @@ namespace HotelManagement.Identity.Services
         public async Task<ApplicationUser> Register(RegistrationRequest request)
         {
             var isUserExists = await _userManager.FindByEmailAsync(request.Email);
-
-            if (isUserExists == null)
+            
+            if (isUserExists != null)
                 throw new Exception("User with this email already exists");
             
             Console.WriteLine("Still running just fine");

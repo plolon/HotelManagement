@@ -15,7 +15,6 @@ namespace HotelManagement.Infrastructure
         {
             var connString =
                 configuration.GetConnectionString("hotelmanagement-db");
-            // TODO: Remove connection string from appsettings.json :)
             services.AddDbContext<HotelManagementDbContext>(options =>
                 options.UseMySql(connString,
                     ServerVersion.AutoDetect(connString)));
