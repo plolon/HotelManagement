@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
 using HotelManagement.Application.Abstraction.Messaging;
 using HotelManagement.Application.DTOs.Hotel;
-using HotelManagement.Application.Extensions;
 using HotelManagement.Application.Features.Commands.Hotels.Requests;
-using HotelManagement.Application.Validators;
-using HotelManagement.Domain.Exceptions;
 using HotelManagement.Domain.Models;
 using HotelManagement.Domain.Repositories;
 

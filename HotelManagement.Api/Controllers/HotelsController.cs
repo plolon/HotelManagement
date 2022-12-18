@@ -1,5 +1,6 @@
 ﻿using HotelManagement.Application.DTOs.Hotel;
 using HotelManagement.Application.Features.Commands.Hotels.Requests;
+using HotelManagement.Application.Features.Hotels.Queries.Requests;
 using HotelManagement.Application.Features.Queries.Hotels.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

@@ -22,7 +22,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Features\Bookings\Queries" />
+      <Folder Include="Features\HotelRooms\Queries" />
       <Folder Include="Features\Hotels\Queries" />
+      <Folder Include="Features\Queries\HotelRooms" />
     </ItemGroup>
 
 </Project>
