@@ -1,6 +1,8 @@
-namespace HotelManagement.Application.Features.Bookings.Commands.Update;
-
+namespace HotelManagement.Application.Features.Bookings.Commands.Update
+{
 public class UpdateBookingRequest
 {
     
 }
+}
+

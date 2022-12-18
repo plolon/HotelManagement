@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using HotelManagement.Application.DTOs.RoomType;
-using HotelManagement.Application.Features.Queries.RoomTypes.Requests;
 using HotelManagement.Domain.Repositories;
 using MediatR;
 
-namespace HotelManagement.Application.Features.Queries.RoomTypes.Handlers
+namespace HotelManagement.Application.Features.HotelRooms.Queries.Handlers
 {
     public class GetAllRoomTypesRequestHandler :IRequestHandler<GetAllRoomTypesRequest, ICollection<RoomTypeDto>>
     {

@@ -1,6 +1,8 @@
-namespace HotelManagement.Application.Features.Bookings.Commands.Delete;
-
+namespace HotelManagement.Application.Features.Bookings.Commands.Delete
+{
 public class DeleteBookingRequestHandler
 {
     
 }
+}
+

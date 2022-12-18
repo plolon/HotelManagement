@@ -1,8 +1,8 @@
-using MediatR;
 using HotelManagement.Application.DTOs.Booking;
 using HotelManagement.Application.DTOs.RoomType;
+using MediatR;
 
-namespace HotelManagement.Application.Features.Queries.Bookings.Requests
+namespace HotelManagement.Application.Features.Bookings.Commands.Create
 {
     public class CreateBookingRequest : IRequest<ICollection<BookingDto>>
     {

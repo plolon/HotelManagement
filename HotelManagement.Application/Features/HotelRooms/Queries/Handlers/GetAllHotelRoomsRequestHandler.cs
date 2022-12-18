@@ -4,7 +4,7 @@ using HotelManagement.Application.Features.Queries.HotelRooms.Requests;
 using HotelManagement.Domain.Repositories;
 using MediatR;
 
-namespace HotelManagement.Application.Features.Queries.HotelRooms.Handlers
+namespace HotelManagement.Application.Features.HotelRooms.Queries.Handlers
 {
     public class GetAllHotelRoomsRequestHandler :IRequestHandler<GetAllHotelRoomsRequest, ICollection<HotelRoomDto>>
     {

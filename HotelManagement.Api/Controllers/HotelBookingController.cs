@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using HotelManagement.Application.DTOs.Booking;
+using HotelManagement.Application.Features.Bookings.Commands.Create;
 using HotelManagement.Application.Features.Queries.Bookings.Requests;
 
 namespace HotelManagement.Api.Controllers

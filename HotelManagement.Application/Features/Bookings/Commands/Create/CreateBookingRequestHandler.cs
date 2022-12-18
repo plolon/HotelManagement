@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace HotelManagement.Application.Features.Queries.Bookings.Handlers
+namespace HotelManagement.Application.Features.Bookings.Commands.Create
 {
     public class CreateBookingRequestHandler
     {
