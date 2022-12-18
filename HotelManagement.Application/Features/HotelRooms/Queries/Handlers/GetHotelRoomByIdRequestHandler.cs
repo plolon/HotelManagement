@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using HotelManagement.Application.DTOs.HotelRoom;
-using HotelManagement.Application.Features.Queries.HotelRooms.Requests;
+using HotelManagement.Application.Features.RoomTypes.Queries.Requests;
 using HotelManagement.Domain.Repositories;
 using MediatR;
 

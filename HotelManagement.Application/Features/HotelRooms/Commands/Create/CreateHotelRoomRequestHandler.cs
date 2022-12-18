@@ -20,6 +20,7 @@ namespace HotelManagement.Application.Features.HotelRooms.Commands.Create
             public async Task<HotelRoomDto> Handle(CreateHotelRoomRequest request,
                 CancellationToken cancellationToken)
             {
+                // TODO: Check if this does not blow up
                 var hotelRoom =
                     _mapper.Map<HotelRoom>(request.CreateHotelRoomDto);
                 hotelRoom = await _unitOfWork.HotelRooms.Add(hotelRoom);

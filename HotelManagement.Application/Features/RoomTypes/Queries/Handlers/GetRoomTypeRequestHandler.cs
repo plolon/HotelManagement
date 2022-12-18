@@ -3,7 +3,7 @@ using HotelManagement.Application.DTOs.RoomType;
 using HotelManagement.Domain.Repositories;
 using MediatR;
 
-namespace HotelManagement.Application.Features.HotelRooms.Queries.Handlers
+namespace HotelManagement.Application.Features.RoomTypes.Queries.Requests
 {
     public class GetRoomTypeRequestHandler : IRequestHandler<GetRoomTypeRequest, RoomTypeDto>
     {
