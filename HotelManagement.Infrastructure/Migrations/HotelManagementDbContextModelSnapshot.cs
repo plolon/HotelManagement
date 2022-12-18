@@ -3,7 +3,6 @@ using System;
 using HotelManagement.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -18,9 +17,7 @@ namespace HotelManagement.Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.11")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("HotelManagement.Domain.Models.Booking", b =>
                 {
@@ -28,19 +25,19 @@ namespace HotelManagement.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("HotelRoomId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
@@ -62,28 +59,28 @@ namespace HotelManagement.Infrastructure.Migrations
                     b.Property<string>("City")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("Country")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("varchar(128)");
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("Street")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("varchar(128)");
 
                     b.HasKey("Id");
 
@@ -118,10 +115,10 @@ namespace HotelManagement.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("HotelId")
                         .HasColumnType("int");
@@ -129,7 +126,7 @@ namespace HotelManagement.Infrastructure.Migrations
                     b.Property<string>("Number")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("varchar(128)");
 
                     b.Property<int>("RoomTypeId")
                         .HasColumnType("int");
@@ -189,7 +186,7 @@ namespace HotelManagement.Infrastructure.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("varchar(128)");
 
                     b.HasKey("Id");
 
@@ -231,7 +228,7 @@ namespace HotelManagement.Infrastructure.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("varchar(128)");
 
                     b.HasKey("Id");
 
@@ -263,26 +260,25 @@ namespace HotelManagement.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("varchar(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasDatabaseName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
+                        .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
 
@@ -290,21 +286,21 @@ namespace HotelManagement.Infrastructure.Migrations
                         new
                         {
                             Id = "a986fb26-1e37-49f8-b7c6-363d5b1be4b9",
-                            ConcurrencyStamp = "6643c576-85db-4c88-866a-95bcf64a3366",
+                            ConcurrencyStamp = "a5ec8c70-3e7e-45c7-a124-59019353662f",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "f94000ea-05fe-43da-a5d3-64b2d646c9dc",
-                            ConcurrencyStamp = "a184e2cc-4c8c-44aa-bd85-c0bd3f8d2ac4",
+                            ConcurrencyStamp = "f228e24a-d01c-46cc-83bb-ca6188e9c6b9",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
                             Id = "b693c6bd-3b96-4403-ad5c-f3c773d504d9",
-                            ConcurrencyStamp = "d67e5c88-b9a6-427d-8294-ce251290e746",
+                            ConcurrencyStamp = "03eb613c-43f3-479d-90ca-097841cc9cf5",
                             Name = "Guest",
                             NormalizedName = "GUEST"
                         });
@@ -316,17 +312,15 @@ namespace HotelManagement.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -338,54 +332,54 @@ namespace HotelManagement.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("varchar(256)");
 
                     b.HasKey("Id");
 
@@ -394,8 +388,7 @@ namespace HotelManagement.Infrastructure.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+                        .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -406,17 +399,15 @@ namespace HotelManagement.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -428,17 +419,17 @@ namespace HotelManagement.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -450,10 +441,10 @@ namespace HotelManagement.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -482,16 +473,16 @@ namespace HotelManagement.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -504,11 +495,11 @@ namespace HotelManagement.Infrastructure.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.ToTable("ApplicationUsers");
 
@@ -517,17 +508,12 @@ namespace HotelManagement.Infrastructure.Migrations
                         {
                             Id = "d76c6509-a64a-4c53-a650-1ab645b7dab9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "47c3ad1c-d2bf-4886-8768-aac14f6f8c6d",
-                            Email = "admin@localhost.pl",
-                            EmailConfirmed = true,
+                            ConcurrencyStamp = "09f7c159-e210-4524-8f03-886bea09e59c",
+                            EmailConfirmed = false,
                             LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@LOCALHOST.PL",
-                            NormalizedUserName = "ADMIN@LOCALHOST.PL",
-                            PasswordHash = "AQAAAAEAACcQAAAAEF/1WFm8FDe87z701Vv4VKUlvoozNfGm12T6japXTbxNgiQRtnMIiAkKEYmt/7Rgeg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a4ce176e-ed17-4dcd-88c5-600bc5a09ffc",
+                            SecurityStamp = "fdad3e9c-ba68-4a4d-95e9-b6661afa5fb6",
                             TwoFactorEnabled = false,
-                            UserName = "admin@localhost.pl",
                             FirstName = "System",
                             LastName = "Admin"
                         },
@@ -535,17 +521,12 @@ namespace HotelManagement.Infrastructure.Migrations
                         {
                             Id = "182f77d7-964e-468a-8c13-8c0118287ca3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c95e3a89-dce3-4a27-9581-fd3d5c8c7a2f",
-                            Email = "employee@localhost.pl",
-                            EmailConfirmed = true,
+                            ConcurrencyStamp = "74d3193e-ca93-44a7-a233-22d6ea62801f",
+                            EmailConfirmed = false,
                             LockoutEnabled = false,
-                            NormalizedEmail = "EMPLOYEE@LOCALHOST.PL",
-                            NormalizedUserName = "EMPLOYEE@LOCALHOST.PL",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOgmRtbNARexha0QntIx5Q+S3CTnN+6GwYuGbbdmViK2ETKh4CQJYGNYuB7wX+CoMQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8b861aa8-b05a-4b4a-affb-fcffc79ed70e",
+                            SecurityStamp = "0b98d2f3-d34e-4b6e-b0c6-653bc4ff2462",
                             TwoFactorEnabled = false,
-                            UserName = "employee@localhost.pl",
                             FirstName = "System",
                             LastName = "Employee"
                         },
@@ -553,17 +534,12 @@ namespace HotelManagement.Infrastructure.Migrations
                         {
                             Id = "7f5923af-d1b4-41ce-8db8-cef9863ac90b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c393d102-9f10-4e5f-9646-3499aedb6589",
-                            Email = "user@localhost.pl",
-                            EmailConfirmed = true,
+                            ConcurrencyStamp = "1cc95a66-4329-4c7a-b39a-b0dbd3570c07",
+                            EmailConfirmed = false,
                             LockoutEnabled = false,
-                            NormalizedEmail = "USER@LOCALHOST.PL",
-                            NormalizedUserName = "USER@LOCALHOST.PL",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDv/vx6+NnR5bX1kgpFecPCfqZWuJ84O0yggR7WNAP0MSP85UipZEGb5ClGeaHeyAQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b55e0a04-b136-4277-85bb-4269f8ce3ab3",
+                            SecurityStamp = "3fdc3662-fb35-4a32-bf4b-477394ec32b6",
                             TwoFactorEnabled = false,
-                            UserName = "user@localhost.pl",
                             FirstName = "System",
                             LastName = "User"
                         });
@@ -663,7 +639,7 @@ namespace HotelManagement.Infrastructure.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithOne()
                         .HasForeignKey("HotelManagement.Domain.Models.ApplicationUser", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 

@@ -18,4 +18,4 @@
     1. Change data annotations to FluentAPI
 4. Authorization
 
-    1. Add password hashing algorithm to user creation
+    1. Limit the returned rows from registration or return just the token :)

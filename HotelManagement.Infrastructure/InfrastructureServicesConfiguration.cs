@@ -9,21 +9,29 @@ namespace HotelManagement.Infrastructure
 {
     public static class InfrastructureServicesConfiguration
     {
-        public static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services,
+        public static IServiceCollection RegisterInfrastructureServices(
+            this IServiceCollection services,
             IConfiguration configuration)
         {
+            var connString =
+                configuration.GetConnectionString("hotelmanagement-db");
             services.AddDbContext<HotelManagementDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("hotelmanagement-db")));
+                options.UseMySql(connString,
+                    ServerVersion.AutoDetect(connString)));
             services.RegisterRepositories();
 
             return services;
         }
 
 
-        private static IServiceCollection RegisterRepositories(this IServiceCollection services)
+        private static IServiceCollection RegisterRepositories(
+            this IServiceCollection services)
         {
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>(); 
+            services.AddScoped(typeof(IGenericRepository<>),
+                typeof(GenericRepository<>));
+            services
+                .AddScoped<IApplicationUserRepository,
+                    ApplicationUserRepository>();
             services.AddScoped<IHotelRepository, HotelRepository>();
             services.AddScoped<IHotelRoomRepository, HotelRoomRepository>();
             services.AddScoped<IRoomTypeRepository, RoomTypeRepository>();

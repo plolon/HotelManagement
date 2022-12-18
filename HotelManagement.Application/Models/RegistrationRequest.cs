@@ -16,6 +16,6 @@ namespace HotelManagement.Application.Models
         public string UserName { get; set; }
         [Required]
         [MinLength(6)]
-        public string Password { get; set; }
+        public string PasswordHash { get; set; }
     }
 }
