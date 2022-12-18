@@ -19,3 +19,4 @@
 4. Authorization
 
     1. Limit the returned rows from registration or return just the token :)
+   2. Add auth to all Create Update Delete commands
