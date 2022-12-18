@@ -13,10 +13,12 @@ namespace HotelManagement.Infrastructure
             this IServiceCollection services,
             IConfiguration configuration)
         {
+            var connString =
+                configuration.GetConnectionString("hotelmanagement-db");
             // TODO: Remove connection string from appsettings.json :)
             services.AddDbContext<HotelManagementDbContext>(options =>
-                options.UseMySQL(
-                    configuration.GetConnectionString("hotelmanagement-db")));
+                options.UseMySql(connString,
+                    ServerVersion.AutoDetect(connString)));
             services.RegisterRepositories();
 
             return services;
