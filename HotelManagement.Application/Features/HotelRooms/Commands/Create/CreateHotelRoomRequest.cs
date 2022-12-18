@@ -1,6 +1,10 @@
-namespace HotelManagement.Application.Features.HotelRooms.Commands.Create;
+using HotelManagement.Application.Abstraction;
+using HotelManagement.Application.DTOs.HotelRoom;
 
-public class CreateHotelRoomRequest
+namespace HotelManagement.Application.Features.HotelRooms.Commands.Create
 {
-    
+    public class CreateHotelRoomRequest : ICommand<HotelRoomDto>
+    {
+        public CreateHotelRoomDto CreateHotelRoomDto { get; set; }
+    }
 }
