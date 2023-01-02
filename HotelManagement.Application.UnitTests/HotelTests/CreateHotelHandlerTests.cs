@@ -17,7 +17,6 @@ namespace HotelManagement.Application.UnitTests.HotelTests
         [Fact]
         public async Task Handle_OnValidInput_ReturnsHotelDto()
         {
-            //Arrange
             var unitofwork = new Mock<IUnitOfWork>();
             var repo = MockHotelRepository.GetRepository();
             unitofwork.Setup(x => x.Hotels).Returns(repo.Object);
@@ -37,12 +36,10 @@ namespace HotelManagement.Application.UnitTests.HotelTests
             };
             var hotel = mapper.Map<Hotel>(savehoteldto);
             var hoteldto = mapper.Map<HotelDto>(hotel);
-            //Act
             var result = await handler.Handle(new CreateHotelRequest
             {
                 SaveHotelDto = savehoteldto
             }, CancellationToken.None);
-
             result.Should().BeEquivalentTo(hoteldto);
         }
     }

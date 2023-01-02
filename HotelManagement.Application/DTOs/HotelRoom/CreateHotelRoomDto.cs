@@ -6,7 +6,7 @@ namespace HotelManagement.Application.DTOs.HotelRoom
         {
             public string Number { get; set; }
             public int HotelId { get; set; }
-            public virtual RoomTypeDto RoomTypeDto { get; set; }
+            public int RoomTypeId { get; set; }
             
         }
 }
