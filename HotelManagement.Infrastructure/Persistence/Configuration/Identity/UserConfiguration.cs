@@ -8,7 +8,7 @@ namespace HotelManagement.Infrastructure.Persistence.Configuration.Identity
     public class UserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
-        {
+        { 
             var hasher = new PasswordHasher<ApplicationUser>();
             builder.HasData(new ApplicationUser
                 {

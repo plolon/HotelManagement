@@ -286,21 +286,21 @@ namespace HotelManagement.Infrastructure.Migrations
                         new
                         {
                             Id = "a986fb26-1e37-49f8-b7c6-363d5b1be4b9",
-                            ConcurrencyStamp = "a5ec8c70-3e7e-45c7-a124-59019353662f",
+                            ConcurrencyStamp = "30cffce5-0b0b-44e7-92e8-3dd5d9a5a8d4",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "f94000ea-05fe-43da-a5d3-64b2d646c9dc",
-                            ConcurrencyStamp = "f228e24a-d01c-46cc-83bb-ca6188e9c6b9",
+                            ConcurrencyStamp = "26934266-4aef-4d57-b2ac-5ee58d0c720a",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
                             Id = "b693c6bd-3b96-4403-ad5c-f3c773d504d9",
-                            ConcurrencyStamp = "03eb613c-43f3-479d-90ca-097841cc9cf5",
+                            ConcurrencyStamp = "30e843eb-cb00-4f4c-86ae-57a4462b819b",
                             Name = "Guest",
                             NormalizedName = "GUEST"
                         });
@@ -508,12 +508,17 @@ namespace HotelManagement.Infrastructure.Migrations
                         {
                             Id = "d76c6509-a64a-4c53-a650-1ab645b7dab9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "09f7c159-e210-4524-8f03-886bea09e59c",
-                            EmailConfirmed = false,
+                            ConcurrencyStamp = "630c0419-bcc8-4aac-aae9-dab45afbd9a3",
+                            Email = "admin@localhost.pl",
+                            EmailConfirmed = true,
                             LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@LOCALHOST.PL",
+                            NormalizedUserName = "ADMIN@LOCALHOST.PL",
+                            PasswordHash = "AQAAAAEAACcQAAAAEImpUtx9EATYMTMRMi9BWam7L68fGl/D1DMgzxtvo5of0CsinmC+A8ZDisDrpLPoeg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fdad3e9c-ba68-4a4d-95e9-b6661afa5fb6",
+                            SecurityStamp = "b9015879-ae2d-4d52-8ff9-cd1ad800637b",
                             TwoFactorEnabled = false,
+                            UserName = "admin@localhost.pl",
                             FirstName = "System",
                             LastName = "Admin"
                         },
@@ -521,12 +526,17 @@ namespace HotelManagement.Infrastructure.Migrations
                         {
                             Id = "182f77d7-964e-468a-8c13-8c0118287ca3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "74d3193e-ca93-44a7-a233-22d6ea62801f",
-                            EmailConfirmed = false,
+                            ConcurrencyStamp = "9f5cfce9-afb9-451d-a092-91f39c27fdb7",
+                            Email = "employee@localhost.pl",
+                            EmailConfirmed = true,
                             LockoutEnabled = false,
+                            NormalizedEmail = "EMPLOYEE@LOCALHOST.PL",
+                            NormalizedUserName = "EMPLOYEE@LOCALHOST.PL",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOJQUaNaNJR/fmNrxzSmgvEXiwFCqnOsvVgIw5w+l1/ZiVD9nrwTkZsrfc+EoySlsg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0b98d2f3-d34e-4b6e-b0c6-653bc4ff2462",
+                            SecurityStamp = "a47a4307-c6f1-44a9-94df-f3f28bef5267",
                             TwoFactorEnabled = false,
+                            UserName = "employee@localhost.pl",
                             FirstName = "System",
                             LastName = "Employee"
                         },
@@ -534,12 +544,17 @@ namespace HotelManagement.Infrastructure.Migrations
                         {
                             Id = "7f5923af-d1b4-41ce-8db8-cef9863ac90b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1cc95a66-4329-4c7a-b39a-b0dbd3570c07",
-                            EmailConfirmed = false,
+                            ConcurrencyStamp = "61a343f8-be0f-40cb-bb36-12c8067030d5",
+                            Email = "user@localhost.pl",
+                            EmailConfirmed = true,
                             LockoutEnabled = false,
+                            NormalizedEmail = "USER@LOCALHOST.PL",
+                            NormalizedUserName = "USER@LOCALHOST.PL",
+                            PasswordHash = "AQAAAAEAACcQAAAAEK5VwTz6OEwK8HNZuf/O8m0kHB20zKfK8UpcGaXIIoZfhLxsKXKX2fgj4kixoX80bw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3fdc3662-fb35-4a32-bf4b-477394ec32b6",
+                            SecurityStamp = "71d4babc-8ae8-4e30-a2c7-d1093600ffb2",
                             TwoFactorEnabled = false,
+                            UserName = "user@localhost.pl",
                             FirstName = "System",
                             LastName = "User"
                         });

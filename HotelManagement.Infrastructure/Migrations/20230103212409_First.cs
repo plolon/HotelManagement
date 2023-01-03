@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HotelManagement.Infrastructure.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class First : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -332,9 +332,9 @@ namespace HotelManagement.Infrastructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "a986fb26-1e37-49f8-b7c6-363d5b1be4b9", "a5ec8c70-3e7e-45c7-a124-59019353662f", "Administrator", "ADMINISTRATOR" },
-                    { "b693c6bd-3b96-4403-ad5c-f3c773d504d9", "03eb613c-43f3-479d-90ca-097841cc9cf5", "Guest", "GUEST" },
-                    { "f94000ea-05fe-43da-a5d3-64b2d646c9dc", "f228e24a-d01c-46cc-83bb-ca6188e9c6b9", "Employee", "EMPLOYEE" }
+                    { "a986fb26-1e37-49f8-b7c6-363d5b1be4b9", "30cffce5-0b0b-44e7-92e8-3dd5d9a5a8d4", "Administrator", "ADMINISTRATOR" },
+                    { "b693c6bd-3b96-4403-ad5c-f3c773d504d9", "30e843eb-cb00-4f4c-86ae-57a4462b819b", "Guest", "GUEST" },
+                    { "f94000ea-05fe-43da-a5d3-64b2d646c9dc", "26934266-4aef-4d57-b2ac-5ee58d0c720a", "Employee", "EMPLOYEE" }
                 });
 
             migrationBuilder.InsertData(
@@ -342,9 +342,9 @@ namespace HotelManagement.Infrastructure.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "182f77d7-964e-468a-8c13-8c0118287ca3", 0, "74d3193e-ca93-44a7-a233-22d6ea62801f", null, false, false, null, null, null, null, null, false, "0b98d2f3-d34e-4b6e-b0c6-653bc4ff2462", false, null },
-                    { "7f5923af-d1b4-41ce-8db8-cef9863ac90b", 0, "1cc95a66-4329-4c7a-b39a-b0dbd3570c07", null, false, false, null, null, null, null, null, false, "3fdc3662-fb35-4a32-bf4b-477394ec32b6", false, null },
-                    { "d76c6509-a64a-4c53-a650-1ab645b7dab9", 0, "09f7c159-e210-4524-8f03-886bea09e59c", null, false, false, null, null, null, null, null, false, "fdad3e9c-ba68-4a4d-95e9-b6661afa5fb6", false, null }
+                    { "182f77d7-964e-468a-8c13-8c0118287ca3", 0, "9f5cfce9-afb9-451d-a092-91f39c27fdb7", "employee@localhost.pl", true, false, null, "EMPLOYEE@LOCALHOST.PL", "EMPLOYEE@LOCALHOST.PL", "AQAAAAEAACcQAAAAEOJQUaNaNJR/fmNrxzSmgvEXiwFCqnOsvVgIw5w+l1/ZiVD9nrwTkZsrfc+EoySlsg==", null, false, "a47a4307-c6f1-44a9-94df-f3f28bef5267", false, "employee@localhost.pl" },
+                    { "7f5923af-d1b4-41ce-8db8-cef9863ac90b", 0, "61a343f8-be0f-40cb-bb36-12c8067030d5", "user@localhost.pl", true, false, null, "USER@LOCALHOST.PL", "USER@LOCALHOST.PL", "AQAAAAEAACcQAAAAEK5VwTz6OEwK8HNZuf/O8m0kHB20zKfK8UpcGaXIIoZfhLxsKXKX2fgj4kixoX80bw==", null, false, "71d4babc-8ae8-4e30-a2c7-d1093600ffb2", false, "user@localhost.pl" },
+                    { "d76c6509-a64a-4c53-a650-1ab645b7dab9", 0, "630c0419-bcc8-4aac-aae9-dab45afbd9a3", "admin@localhost.pl", true, false, null, "ADMIN@LOCALHOST.PL", "ADMIN@LOCALHOST.PL", "AQAAAAEAACcQAAAAEImpUtx9EATYMTMRMi9BWam7L68fGl/D1DMgzxtvo5of0CsinmC+A8ZDisDrpLPoeg==", null, false, "b9015879-ae2d-4d52-8ff9-cd1ad800637b", false, "admin@localhost.pl" }
                 });
 
             migrationBuilder.InsertData(
