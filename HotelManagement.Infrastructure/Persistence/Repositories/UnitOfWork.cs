@@ -36,7 +36,6 @@ namespace HotelManagement.Infrastructure.Persistence.Repositories
         public IHotelRepository Hotels { get; }
         public IRoomTypeRepository RoomTypes { get; }
         public IHotelRoomRepository HotelRooms { get; }
-//        public IApplicationUserRepository ApplicationUser { get; }
         public IBookingRepository Bookings { get; }
     }
 }
