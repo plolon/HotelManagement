@@ -71,7 +71,8 @@ namespace HotelManagement.Infrastructure.Migrations
                 name: "Hotels",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Country = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false)
@@ -271,7 +272,8 @@ namespace HotelManagement.Infrastructure.Migrations
                 name: "HotelRooms",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Number = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     RoomTypeId = table.Column<int>(type: "int", nullable: false),
@@ -301,7 +303,8 @@ namespace HotelManagement.Infrastructure.Migrations
                 name: "Bookings",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     StartDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     HotelRoomId = table.Column<int>(type: "int", nullable: false),
@@ -332,9 +335,9 @@ namespace HotelManagement.Infrastructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "a986fb26-1e37-49f8-b7c6-363d5b1be4b9", "30cffce5-0b0b-44e7-92e8-3dd5d9a5a8d4", "Administrator", "ADMINISTRATOR" },
-                    { "b693c6bd-3b96-4403-ad5c-f3c773d504d9", "30e843eb-cb00-4f4c-86ae-57a4462b819b", "Guest", "GUEST" },
-                    { "f94000ea-05fe-43da-a5d3-64b2d646c9dc", "26934266-4aef-4d57-b2ac-5ee58d0c720a", "Employee", "EMPLOYEE" }
+                    { "a986fb26-1e37-49f8-b7c6-363d5b1be4b9", "bf1efac3-983a-42d9-8fec-218b98934d99", "Administrator", "ADMINISTRATOR" },
+                    { "b693c6bd-3b96-4403-ad5c-f3c773d504d9", "00a13e0b-ec17-4289-a9ab-2ee624337402", "Guest", "GUEST" },
+                    { "f94000ea-05fe-43da-a5d3-64b2d646c9dc", "fe19ccfd-b0ee-4fec-9747-c4d3d7145f49", "Employee", "EMPLOYEE" }
                 });
 
             migrationBuilder.InsertData(
@@ -342,9 +345,9 @@ namespace HotelManagement.Infrastructure.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "182f77d7-964e-468a-8c13-8c0118287ca3", 0, "9f5cfce9-afb9-451d-a092-91f39c27fdb7", "employee@localhost.pl", true, false, null, "EMPLOYEE@LOCALHOST.PL", "EMPLOYEE@LOCALHOST.PL", "AQAAAAEAACcQAAAAEOJQUaNaNJR/fmNrxzSmgvEXiwFCqnOsvVgIw5w+l1/ZiVD9nrwTkZsrfc+EoySlsg==", null, false, "a47a4307-c6f1-44a9-94df-f3f28bef5267", false, "employee@localhost.pl" },
-                    { "7f5923af-d1b4-41ce-8db8-cef9863ac90b", 0, "61a343f8-be0f-40cb-bb36-12c8067030d5", "user@localhost.pl", true, false, null, "USER@LOCALHOST.PL", "USER@LOCALHOST.PL", "AQAAAAEAACcQAAAAEK5VwTz6OEwK8HNZuf/O8m0kHB20zKfK8UpcGaXIIoZfhLxsKXKX2fgj4kixoX80bw==", null, false, "71d4babc-8ae8-4e30-a2c7-d1093600ffb2", false, "user@localhost.pl" },
-                    { "d76c6509-a64a-4c53-a650-1ab645b7dab9", 0, "630c0419-bcc8-4aac-aae9-dab45afbd9a3", "admin@localhost.pl", true, false, null, "ADMIN@LOCALHOST.PL", "ADMIN@LOCALHOST.PL", "AQAAAAEAACcQAAAAEImpUtx9EATYMTMRMi9BWam7L68fGl/D1DMgzxtvo5of0CsinmC+A8ZDisDrpLPoeg==", null, false, "b9015879-ae2d-4d52-8ff9-cd1ad800637b", false, "admin@localhost.pl" }
+                    { "182f77d7-964e-468a-8c13-8c0118287ca3", 0, "7094556f-fa62-42a1-a365-f5a03569900c", "employee@localhost.pl", true, false, null, "EMPLOYEE@LOCALHOST.PL", "EMPLOYEE@LOCALHOST.PL", "AQAAAAEAACcQAAAAEJLmz+KxFK4JRLAM1yadEc/7UfFKBpNF8GLPIFaPzIyU7wKy8iSn/GuKq8GCpkmDdQ==", null, false, "e38947ba-84c9-40d3-900a-623e164f9a7f", false, "employee@localhost.pl" },
+                    { "7f5923af-d1b4-41ce-8db8-cef9863ac90b", 0, "4b064bc2-7b61-41ab-96cc-8bf10a381366", "user@localhost.pl", true, false, null, "USER@LOCALHOST.PL", "USER@LOCALHOST.PL", "AQAAAAEAACcQAAAAED7P1lN2YJXF2+gEvKw8UADMt4MG0gZ5p9salCnav0AGnpDedjfvWabTsuVpCxPB9Q==", null, false, "bba1b54f-7132-4a0f-bba4-a9d3450b6343", false, "user@localhost.pl" },
+                    { "d76c6509-a64a-4c53-a650-1ab645b7dab9", 0, "0a0b5b4d-0b47-4787-a6ef-60e4c916f789", "admin@localhost.pl", true, false, null, "ADMIN@LOCALHOST.PL", "ADMIN@LOCALHOST.PL", "AQAAAAEAACcQAAAAEKD93XA/de4WjwiR5BxH2hcJcyUtYpkPziA7GyWwomU5syXCjYORgRwJ5B25xmGr5A==", null, false, "d8724d50-8a5f-470e-9d0f-4cfa8419a1b6", false, "admin@localhost.pl" }
                 });
 
             migrationBuilder.InsertData(
