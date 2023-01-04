@@ -30,8 +30,10 @@ namespace HotelManagement.Api.Controllers
 
         // POST: <BookingController>
         [HttpPost]
-        public async Task<BookingDto> Post([FromBody] BookingDto bookingDto) =>
+        public async Task<BookingDto> Post(
+            [FromBody] CreateBookingDto createBookingDto) =>
             await _mediator.Send(
-                new CreateBookingRequest { BookingDto = bookingDto });
+                new CreateBookingRequest
+                    { CreateBookingDto = createBookingDto });
     }
 }

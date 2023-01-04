@@ -24,7 +24,7 @@ namespace HotelManagement.Application.Features.Bookings.Commands.Create
         public async Task<BookingDto> Handle(CreateBookingRequest request,
             CancellationToken cancellationToken)
         {
-            var booking = _mapper.Map<Booking>(request.BookingDto);
+            var booking = _mapper.Map<Booking>(request.CreateBookingDto);
             booking = await _unitOfWork.Bookings.Add(booking);
 
             _unitOfWork.Complete();

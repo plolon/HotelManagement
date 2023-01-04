@@ -5,6 +5,6 @@ namespace HotelManagement.Application.Features.Bookings.Commands.Requests
 {
     public class CreateBookingRequest : ICommand<BookingDto>
     {
-        public BookingDto BookingDto { get; set; }
+        public CreateBookingDto CreateBookingDto { get; set; }
     }
 }
