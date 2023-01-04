@@ -1,7 +1,5 @@
 ﻿using HotelManagement.Application.DTOs.HotelRoom;
-using HotelManagement.Application.DTOs.RoomType;
 using HotelManagement.Domain.Models;
-using HotelManagement.Domain.Models.OptionSets;
 
 namespace HotelManagement.Application.Profiles
 {

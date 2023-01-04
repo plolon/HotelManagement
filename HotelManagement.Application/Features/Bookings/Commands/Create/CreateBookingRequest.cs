@@ -2,7 +2,7 @@ using HotelManagement.Application.DTOs.Booking;
 using HotelManagement.Application.DTOs.RoomType;
 using MediatR;
 
-namespace HotelManagement.Application.Features.Bookings.Commands.Create
+namespace HotelManagement.Application.Features.Bookings.Commands.Requests
 {
     public class CreateBookingRequest : IRequest<ICollection<BookingDto>>
     {

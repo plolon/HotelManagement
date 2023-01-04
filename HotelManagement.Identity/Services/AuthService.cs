@@ -26,10 +26,10 @@ namespace HotelManagement.Identity.Services
             IUnitOfWork _unitOfWork
             )
         {
-            this._jwtSettings = jwtSettings.Value;
-            this._userManager = userManager;
-            this._signInManager = signInManager;
-            this._mapper = mapper;
+            _jwtSettings = jwtSettings.Value;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _mapper = mapper;
             this._unitOfWork = _unitOfWork;
         }
 
@@ -65,16 +65,18 @@ namespace HotelManagement.Identity.Services
                 throw new Exception("User with this email already exists");
 
             var newUser = _mapper.Map<ApplicationUser>(request);
-
+            
             var hasher = new PasswordHasher<ApplicationUser>();
+            
+            newUser.PasswordHash = hasher.HashPassword(null, request.Password);
 
-            newUser.PasswordHash = hasher.HashPassword(null, newUser.PasswordHash);
+            var res = await _userManager.CreateAsync(newUser);
             
-            var createdUser = await _unitOfWork.ApplicationUser.Add(newUser);
-            
+            // TODO: Throw error if res returns one
+
             await _unitOfWork.Complete();
 
-            return createdUser; 
+            return newUser; 
         }
 
         private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)

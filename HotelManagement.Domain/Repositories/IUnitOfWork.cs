@@ -8,6 +8,6 @@
         IRoomTypeRepository RoomTypes { get; }
         IHotelRoomRepository HotelRooms { get; }
         IBookingRepository Bookings { get; }
-        IApplicationUserRepository ApplicationUser { get; }
+//        IApplicationUserRepository ApplicationUser { get; }
     }
 }

@@ -19,6 +19,7 @@ namespace HotelManagement.Infrastructure
                 options.UseMySql(connString,
                     ServerVersion.AutoDetect(connString)));
             services.RegisterRepositories();
+            
 
             return services;
         }
