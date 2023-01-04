@@ -22,7 +22,7 @@ namespace HotelManagement.Api.Controllers
 
         // GET: <BookingController>
         [HttpGet]
-        public async Task<BookingDto> Get() 
+        public async Task<BookingDto> Get()
         {
             _logger.Information("BookingsController GET start");
             return await _mediator.Send(new GetAllBookingsRequest());
@@ -30,7 +30,8 @@ namespace HotelManagement.Api.Controllers
 
         // POST: <BookingController>
         [HttpPost]
-        public async Task<ICollection<BookingDto>> Post(CreateBookingRequest createBookingRequest) =>
-            await _mediator.Send(createBookingRequest);
+        public async Task<BookingDto> Post([FromBody] BookingDto bookingDto) =>
+            await _mediator.Send(
+                new CreateBookingRequest { BookingDto = bookingDto });
     }
 }

@@ -8,6 +8,8 @@ namespace HotelManagement.Application.Profiles
         public void CreateBookingMappings()
         {
             CreateMap<BookingDto, Booking>();
+
+            CreateMap<Booking, BookingDto>();
         }
     }
 }

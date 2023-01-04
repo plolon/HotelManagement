@@ -1,14 +1,10 @@
+using HotelManagement.Application.Abstraction;
 using HotelManagement.Application.DTOs.Booking;
-using HotelManagement.Application.DTOs.RoomType;
-using MediatR;
 
 namespace HotelManagement.Application.Features.Bookings.Commands.Requests
 {
-    public class CreateBookingRequest : IRequest<ICollection<BookingDto>>
+    public class CreateBookingRequest : ICommand<BookingDto>
     {
-        public int Id { get; set; }
-        public string Number { get; set; }
-        public RoomTypeDto RoomType { get; set; }
-        public int HotelId { get; set; }
+        public BookingDto BookingDto { get; set; }
     }
 }
