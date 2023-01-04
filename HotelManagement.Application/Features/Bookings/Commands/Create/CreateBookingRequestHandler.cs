@@ -4,7 +4,6 @@ using HotelManagement.Application.DTOs.Booking;
 using HotelManagement.Application.Features.Bookings.Commands.Requests;
 using HotelManagement.Domain.Models;
 using HotelManagement.Domain.Repositories;
-using MediatR;
 
 namespace HotelManagement.Application.Features.Bookings.Commands.Create
 {

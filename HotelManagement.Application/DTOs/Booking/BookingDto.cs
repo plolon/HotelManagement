@@ -1,6 +1,4 @@
-﻿using HotelManagement.Application.DTOs.Common;
-
-namespace HotelManagement.Application.DTOs.Booking
+﻿namespace HotelManagement.Application.DTOs.Booking
 {
     public class BookingDto
     {
