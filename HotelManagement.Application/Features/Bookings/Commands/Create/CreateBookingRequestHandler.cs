@@ -27,7 +27,7 @@ namespace HotelManagement.Application.Features.Bookings.Commands.Create
             var booking = _mapper.Map<Booking>(request.CreateBookingDto);
             booking = await _unitOfWork.Bookings.Add(booking);
 
-            _unitOfWork.Complete();
+            await _unitOfWork.Complete();
             return _mapper.Map<BookingDto>(booking);
         }
     }
