@@ -1,6 +1,6 @@
 ﻿namespace HotelManagement.Application.DTOs.Booking
 {
-    public class CreateBookingDto
+    public class SaveBookingDto
     {
         //TODO: UserId
         public int HotelRoomId { get; set; }

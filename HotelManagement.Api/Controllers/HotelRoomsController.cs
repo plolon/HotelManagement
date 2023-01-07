@@ -28,12 +28,13 @@ public class HotelRoomsController : ControllerBase
 
     // GET: api/<HotelRoomsController>/id
     [Authorize(Roles =
-        "SuperAdministrator, Administrator, Premium, Gold, Silver, Basic")]
+        "Administrator,Employee,Guest")]
     [HttpGet("{id}")]
     public async Task<HotelRoomDto> Get(int id) =>
         await _mediator.Send(new GetHotelRoomByIdRequest { Id = id });
-    
+
     // POST: api/<RoomTypesController>
+    [Authorize(Roles = "Administrator")]
     [HttpPost]
     public async Task<HotelRoomDto>
         Post(CreateHotelRoomDto createHotelRoomDto) =>

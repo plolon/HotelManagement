@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using HotelManagement.Application.DTOs.Booking;
+using HotelManagement.Application.Features.Bookings.Commands.Delete;
 using HotelManagement.Application.Features.Bookings.Commands.Requests;
+using HotelManagement.Application.Features.Bookings.Commands.Update;
+using HotelManagement.Application.Features.Commands.Hotels.Requests;
 using HotelManagement.Application.Features.Queries.Bookings.Requests;
 using ILogger = Serilog.ILogger;
 
@@ -31,9 +34,19 @@ namespace HotelManagement.Api.Controllers
         // POST: <BookingController>
         [HttpPost]
         public async Task<BookingDto> Post(
-            [FromBody] CreateBookingDto createBookingDto) =>
+            [FromBody] SaveBookingDto saveBookingDto) =>
             await _mediator.Send(
                 new CreateBookingRequest
-                    { CreateBookingDto = createBookingDto });
+                    { SaveBookingDto = saveBookingDto });
+
+        [HttpDelete]
+        public async Task<bool> Delete(int id) =>
+            await _mediator.Send(new DeleteHotelRequest { Id = id });
+
+        [HttpPut]
+        public async Task<BookingDto> Update(
+            [FromBody] SaveBookingDto updateBookingDto, int id) =>
+            await _mediator.Send(new UpdateBookingRequest
+                { UpdateBookingDto = updateBookingDto, Id = id });
     }
 }

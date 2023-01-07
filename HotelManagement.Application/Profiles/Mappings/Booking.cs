@@ -7,7 +7,7 @@ namespace HotelManagement.Application.Profiles
     {
         public void CreateBookingMappings()
         {
-            CreateMap<CreateBookingDto, Booking>()
+            CreateMap<SaveBookingDto, Booking>()
                 .ForMember(b => b.StartDate,
                     opt => opt.MapFrom(cbd =>
                         cbd.StartDate.ToString("yyyy-MM-dd HH:mm:ss")))

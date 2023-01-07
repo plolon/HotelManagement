@@ -15,7 +15,7 @@ namespace HotelManagement.Application.Features.Commands.Hotels.Handlers
 
         public async Task<bool> Handle(DeleteHotelRequest request, CancellationToken cancellationToken)
         {
-            bool result = await _unitOfWork.Hotels.Delete(request.Id);
+            var result = await _unitOfWork.Hotels.Delete(request.Id);
             await _unitOfWork.Complete();
             return result;
         }
