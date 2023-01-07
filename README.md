@@ -18,6 +18,6 @@
     1. Change data annotations to FluentAPI
 4. Authorization
 
-    1. Limit the returned rows from registration or return just the token :)
+   1. Limit the returned rows from registration or return just the token :)
    2. Add auth to all Create Update Delete commands
    3. Fix auth in HotelRooms :bug:
