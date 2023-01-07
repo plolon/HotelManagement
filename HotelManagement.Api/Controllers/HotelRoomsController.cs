@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HotelManagement.Api.Controllers;
 
-[Authorize(Roles = "any")]
 [Route("api/[controller]")]
 [ApiController]
 public class HotelRoomsController : ControllerBase
@@ -22,7 +21,7 @@ public class HotelRoomsController : ControllerBase
 
     // GET: api/<HotelRoomsController>
     [Authorize(Roles =
-        "SuperAdministrator, Administrator, Premium, Gold, Silver, Basic")]
+        "Administrator,Employee,Guest")]
     [HttpGet]
     public async Task<ICollection<HotelRoomDto>> Get() =>
         await _mediator.Send(new GetAllHotelRoomsRequest());
