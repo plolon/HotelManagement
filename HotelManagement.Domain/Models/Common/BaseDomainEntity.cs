@@ -5,7 +5,7 @@ namespace HotelManagement.Domain.Models.Common
 {
     public class BaseDomainEntity
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }

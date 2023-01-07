@@ -1,5 +1,3 @@
-using HotelManagement.Application.DTOs.RoomType;
-
 namespace HotelManagement.Application.DTOs.HotelRoom
 {
     public class CreateHotelRoomDto

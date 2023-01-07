@@ -10,6 +10,7 @@ namespace HotelManagement.Application.Profiles
             CreateHotelRoomMappings();
             CreateOptionSetMappings();
             CreateUserMappings();
+            CreateBookingMappings();
         }
     }
 }

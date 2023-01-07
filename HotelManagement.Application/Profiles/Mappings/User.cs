@@ -8,8 +8,10 @@ namespace HotelManagement.Application.Profiles
         public void CreateUserMappings()
         {
             CreateMap<RegistrationRequest, ApplicationUser>()
-                .ForMember( appUsr => appUsr.NormalizedEmail, opt => opt.MapFrom( regReq => regReq.Email.ToUpper()))
-                .ForMember(appUsr => appUsr.NormalizedUserName, opt => opt.MapFrom(regReq => regReq.UserName.ToUpper()));
+                .ForMember(appUsr => appUsr.NormalizedEmail,
+                    opt => opt.MapFrom(regReq => regReq.Email.ToUpper()))
+                .ForMember(appUsr => appUsr.NormalizedUserName,
+                    opt => opt.MapFrom(regReq => regReq.UserName.ToUpper()));
         }
     }
 }

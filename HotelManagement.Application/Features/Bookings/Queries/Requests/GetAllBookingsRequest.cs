@@ -7,3 +7,4 @@ namespace HotelManagement.Application.Features.Queries.Bookings.Requests
     {
     }
 }
+
