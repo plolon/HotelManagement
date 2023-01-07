@@ -14,8 +14,8 @@ namespace HotelManagement.Application.Profiles
                 .ForMember(b => b.EndDate,
                     opt => opt.MapFrom(cbd =>
                         cbd.EndDate.ToString("yyyy-MM-dd HH:mm:ss")));
-            CreateMap<BookingDto, Booking>();
             CreateMap<Booking, BookingDto>();
+            CreateMap<BookingDto, Booking>();
         }
     }
 }

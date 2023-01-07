@@ -25,7 +25,7 @@ namespace HotelManagement.Api.Controllers
 
         // GET: <BookingController>
         [HttpGet]
-        public async Task<BookingDto> Get()
+        public async Task<ICollection<BookingDto>> Get()
         {
             _logger.Information("BookingsController GET start");
             return await _mediator.Send(new GetAllBookingsRequest());
