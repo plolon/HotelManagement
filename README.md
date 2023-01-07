@@ -9,6 +9,7 @@
     3. Add logging to file feature
     4. Add env flag to throw complete errors in dev env
     5. Add Background Events layer w/ notifications, etc.
+   6. Add validation to controllers
 2. Domain
 
     1. Add relationship between Booking & User & Hotel
@@ -20,4 +21,3 @@
 
    1. Limit the returned rows from registration or return just the token :)
    2. Add auth to all Create Update Delete commands
-   3. Fix auth in HotelRooms :bug:

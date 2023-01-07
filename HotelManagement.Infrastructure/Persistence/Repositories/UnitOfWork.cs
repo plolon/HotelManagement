@@ -12,14 +12,12 @@ namespace HotelManagement.Infrastructure.Persistence.Repositories
             IRoomTypeRepository roomTypeRepository,
             IHotelRoomRepository hotelRoomRepository,
             IBookingRepository bookingRepository)
-            //IApplicationUserRepository applicationUserRepository)
         {
             _dbContext = dbContext;
             Hotels = hotelRepository;
             RoomTypes = roomTypeRepository;
             HotelRooms = hotelRoomRepository;
             Bookings = bookingRepository;
-            // ApplicationUser = applicationUserRepository;
         }
 
         public void Dispose()
