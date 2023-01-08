@@ -8,9 +8,10 @@ using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddEnvironmentVariables();
 
-builder.Host.UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration    //TODO: Before deploy move credentials to IOptions and add logging to file
-    .WriteTo.Console()
-    .WriteTo.Seq("http://localhost:5341/"));
+builder.Host.UseSerilog((hostingContext, loggerConfiguration) =>
+    loggerConfiguration //TODO: Before deploy move credentials to IOptions and add logging to file
+        .WriteTo.Console()
+        .WriteTo.Seq("http://localhost:5341/"));
 
 builder.Services.RegisterSwagger();
 
@@ -28,8 +29,9 @@ app.UseAuthentication();
 
 // if (app.Environment.IsDevelopment()) // always IsDevelopment
 // {
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HotelManagement.Api v1"));
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "HotelManagement.Api v1"));
 // }
 
 app.UseSerilogRequestLogging();

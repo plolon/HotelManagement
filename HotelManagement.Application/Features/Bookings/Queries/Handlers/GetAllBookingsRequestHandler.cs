@@ -8,7 +8,7 @@ namespace HotelManagement.Application.Features.Queries.Bookings.Handlers
 {
     public class
         GetAllBookingsRequestHandler : IRequestHandler<GetAllBookingsRequest,
-            BookingDto>
+            ICollection<BookingDto>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -20,12 +20,15 @@ namespace HotelManagement.Application.Features.Queries.Bookings.Handlers
             _mapper = mapper;
         }
 
-        public async Task<BookingDto> Handle(GetAllBookingsRequest request,
+        public async Task<ICollection<BookingDto>> Handle(
+            GetAllBookingsRequest request,
             CancellationToken cancellationToken)
         {
             var bookings = await _unitOfWork.Bookings.GetAll();
 
-            return !bookings.Any() ? null : _mapper.Map<BookingDto>(bookings);
+            return !bookings.Any()
+                ? null
+                : _mapper.Map<ICollection<BookingDto>>(bookings);
         }
     }
 }
