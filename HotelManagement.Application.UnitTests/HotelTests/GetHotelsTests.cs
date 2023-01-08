@@ -1,6 +1,7 @@
 using AutoMapper;
 using FluentAssertions;
 using HotelManagement.Application.DTOs.Hotel;
+using HotelManagement.Application.Exceptions;
 using HotelManagement.Application.Features.Hotels.Queries.Handlers;
 using HotelManagement.Application.Features.Hotels.Queries.Requests;
 using HotelManagement.Application.Profiles;
@@ -185,6 +186,29 @@ namespace HotelManagement.Application.UnitTests.HotelTests
                 CancellationToken.None);
 
             res.Should().BeNull();
+        }
+
+        [Fact]
+        public async Task Handle_GetById_WithInvalidId_ThrowsValidationError()
+        {
+            var unitOfWork = new Mock<IUnitOfWork>();
+            unitOfWork.Setup(x => x.Hotels.Get(It.IsAny<int>()))
+                .Returns(async () => null);
+
+            var mapperConfig = new MapperConfiguration(x =>
+            {
+                x.AddProfile<MappingProfile>();
+            });
+
+            var mapper = mapperConfig.CreateMapper();
+
+            var handler =
+                new GetHotelByIdRequestHandler(unitOfWork.Object, mapper);
+
+            FluentActions.Invoking(() =>
+                    handler.Handle(new GetHotelByIdRequest { Id = -1 },
+                        CancellationToken.None)).Should()
+                .ThrowAsync<ValidationException>();
         }
     }
 }
