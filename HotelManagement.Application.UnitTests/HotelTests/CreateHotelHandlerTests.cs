@@ -4,7 +4,6 @@ using HotelManagement.Application.DTOs.Hotel;
 using HotelManagement.Application.Features.Commands.Hotels.Handlers;
 using HotelManagement.Application.Features.Commands.Hotels.Requests;
 using HotelManagement.Application.Profiles;
-using HotelManagement.Application.UnitTests.Mocs.Repositories;
 using HotelManagement.Domain.Models;
 using HotelManagement.Domain.Repositories;
 using Moq;
@@ -17,13 +16,14 @@ namespace HotelManagement.Application.UnitTests.HotelTests
         [Fact]
         public async Task Handle_OnValidInput_ReturnsHotelDto()
         {
-            var unitofwork = new Mock<IUnitOfWork>();
-            var repo = MockHotelRepository.GetRepository();
-            unitofwork.Setup(x => x.Hotels).Returns(repo.Object);
-
-            var mapperConfig = new MapperConfiguration(x => { x.AddProfile<MappingProfile>(); });
+            var setup = new SetupHotelUnitOfWork(new Mock<IUnitOfWork>());
+            var mapperConfig = new MapperConfiguration(x =>
+            {
+                x.AddProfile<MappingProfile>();
+            });
             var mapper = mapperConfig.CreateMapper();
-            var handler = new CreateHotelHandler(unitofwork.Object, mapper);
+            var handler =
+                new CreateHotelHandler(setup.unitOfWork.Object, mapper);
             var savehoteldto = new SaveHotelDto
             {
                 Name = "TEST",
@@ -41,6 +41,33 @@ namespace HotelManagement.Application.UnitTests.HotelTests
                 SaveHotelDto = savehoteldto
             }, CancellationToken.None);
             result.Should().BeEquivalentTo(hoteldto);
+        }
+
+        [Fact]
+        public async Task Handle_OnInvalidInput_ReturnValidationError()
+        {
+            var setup = new SetupHotelUnitOfWork(new Mock<IUnitOfWork>());
+            var mapperConfig = new MapperConfiguration(x =>
+            {
+                x.AddProfile<MappingProfile>();
+            });
+            var mapper = mapperConfig.CreateMapper();
+
+            var handler =
+                new CreateHotelHandler(setup.unitOfWork.Object, mapper);
+            var saveHodelDto = new SaveHotelDto
+            {
+                Name = "Invalid"
+            };
+
+            // TODO: Change to exact type :)
+            var res = Assert.ThrowsAsync<Exception>(async () =>
+                await handler.Handle(
+                    new CreateHotelRequest
+                        { SaveHotelDto = saveHodelDto },
+                    CancellationToken.None));
+            Assert.Contains("One or more errors occurred",
+                res.Exception.Message);
         }
     }
 }
