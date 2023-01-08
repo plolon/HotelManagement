@@ -6,6 +6,7 @@ using HotelManagement.Application.Features.Bookings.Commands.Requests;
 using HotelManagement.Application.Features.Bookings.Commands.Update;
 using HotelManagement.Application.Features.Commands.Hotels.Requests;
 using HotelManagement.Application.Features.Queries.Bookings.Requests;
+using Microsoft.AspNetCore.Authorization;
 using ILogger = Serilog.ILogger;
 
 namespace HotelManagement.Api.Controllers
@@ -32,6 +33,7 @@ namespace HotelManagement.Api.Controllers
         }
 
         // POST: <BookingController>
+        [Authorize(Roles = "Administrator")] //temp
         [HttpPost]
         public async Task<BookingDto> Post(
             [FromBody] SaveBookingDto saveBookingDto) =>
@@ -39,11 +41,13 @@ namespace HotelManagement.Api.Controllers
                 new CreateBookingRequest
                     { SaveBookingDto = saveBookingDto });
 
+        [Authorize(Roles = "Administrator")] //temp
         [HttpDelete]
         public async Task<bool> Delete(int id) =>
             await _mediator.Send(new DeleteHotelRequest { Id = id });
 
-        [HttpPut]
+        [Authorize(Roles = "Administrator")] //temp
+        [HttpPut("{id}")]
         public async Task<BookingDto> Update(
             [FromBody] SaveBookingDto updateBookingDto, int id) =>
             await _mediator.Send(new UpdateBookingRequest
