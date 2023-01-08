@@ -1,6 +1,7 @@
 ﻿using HotelManagement.Application.DTOs.HotelRoom;
 using HotelManagement.Application.Features.Commands.Hotels.Requests;
 using HotelManagement.Application.Features.HotelRooms.Commands.Create;
+using HotelManagement.Application.Features.HotelRooms.Commands.Update;
 using HotelManagement.Application.Features.Queries.HotelRooms.Requests;
 using HotelManagement.Application.Features.RoomTypes.Queries.Requests;
 using MediatR;
@@ -47,11 +48,21 @@ public class HotelRoomsController : ControllerBase
     [Authorize(Roles = "Administrator")]
     [HttpPost]
     public async Task<HotelRoomDto>
-        Post(CreateHotelRoomDto createHotelRoomDto)
+        Post([FromBody] CreateHotelRoomDto createHotelRoomDto)
     {
         _logger.Information("HotelRoomsController POST start");
         return await _mediator.Send(new CreateHotelRoomRequest
             { CreateHotelRoomDto = createHotelRoomDto });
+    }
+
+    [Authorize(Roles = "Administrator")]
+    [HttpPut("{id}")]
+    public async Task<HotelRoomDto> Update(
+        [FromBody] CreateHotelRoomDto createHotelRoomDto, int id)
+    {
+        _logger.Information("HotelRoomsController PUT start");
+        return await _mediator.Send(new UpdateHotelRoomRequest
+            { UpdateHotelRoomDto = createHotelRoomDto, Id = id });
     }
 
     [Authorize(Roles = "Administrator")]

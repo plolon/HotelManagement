@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using HotelManagement.Application.DTOs.Booking;
-using HotelManagement.Application.Features.Bookings.Commands.Delete;
 using HotelManagement.Application.Features.Bookings.Commands.Requests;
 using HotelManagement.Application.Features.Bookings.Commands.Update;
 using HotelManagement.Application.Features.Commands.Hotels.Requests;
