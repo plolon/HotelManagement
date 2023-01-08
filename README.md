@@ -10,6 +10,7 @@
     4. Add env flag to throw complete errors in dev env
     5. Add Background Events layer w/ notifications, etc.
    6. Add validation to controllers
+   7. Testing and expanding validation
 2. Domain
 
     1. Add relationship between Booking & User & Hotel
