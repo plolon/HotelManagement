@@ -44,5 +44,34 @@ namespace HotelManagement.Application.UnitTests.HotelTests
             }, CancellationToken.None);
             Assert.Equal(false, res);
         }
+
+        [Fact]
+        public async Task Handle_OnNoInput_ThrowsValidationError()
+        {
+            var unitOfWork = new Mock<IUnitOfWork>();
+            var handler = new DeleteHotelRequestHandler(unitOfWork.Object);
+
+            // TODO: Change to exact exception type
+            var res = Assert.ThrowsAsync<Exception>(async () =>
+                await handler.Handle(
+                    new DeleteHotelRequest(), CancellationToken.None));
+            Assert.Contains("One or more errors occurred",
+                res.Exception.Message);
+        }
+
+        [Fact]
+        public async Task Handle_OnNegativeInt_ThrowsValidationError()
+        {
+            var unitOfWork = new Mock<IUnitOfWork>();
+            var handler = new DeleteHotelRequestHandler(unitOfWork.Object);
+
+            // TODO: Change to exact exception type
+            var res = Assert.ThrowsAsync<Exception>(async () =>
+                await handler.Handle(
+                    new DeleteHotelRequest { Id = -1 },
+                    CancellationToken.None));
+            Assert.Contains("One or more errors occurred",
+                res.Exception.Message);
+        }
     }
 }
