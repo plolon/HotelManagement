@@ -20,8 +20,17 @@ steps:
     projects: '**/*UnitTests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
+- task: SonarQubePrepare@5
+  inputs:
+    SonarQube: 'sonarQube'
+    scannerMode: 'MSBuild'
+    projectKey: 'dawid_banczak'
+    projectName: 'dawid_banczak'
+
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- task: SonarQubeAnalyze@5
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet publish --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
