@@ -1,3 +1,4 @@
+using HotelManagement.Application.Abstraction.Messaging;
 using HotelManagement.Application.Features.Commands.Hotels.Requests;
 using HotelManagement.Domain.Repositories;
 using MediatR;
@@ -5,7 +6,7 @@ using MediatR;
 namespace HotelManagement.Application.Features.Bookings.Commands.Delete
 {
     public class
-        DeleteBookingRequestHandler : IRequestHandler<DeleteHotelRequest, bool>
+        DeleteBookingRequestHandler : ICommandHandler<DeleteHotelRequest, bool>
     {
         private readonly IUnitOfWork _unitOfWork;
 

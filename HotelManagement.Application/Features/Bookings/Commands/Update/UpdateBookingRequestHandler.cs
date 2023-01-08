@@ -1,12 +1,12 @@
 using AutoMapper;
+using HotelManagement.Application.Abstraction.Messaging;
 using HotelManagement.Application.DTOs.Booking;
 using HotelManagement.Domain.Repositories;
-using MediatR;
 
 namespace HotelManagement.Application.Features.Bookings.Commands.Update
 {
     public class
-        UpdateBookingRequestHandler : IRequestHandler<UpdateBookingRequest,
+        UpdateBookingRequestHandler : ICommandHandler<UpdateBookingRequest,
             BookingDto>
     {
         private readonly IUnitOfWork _unitOfWork;
