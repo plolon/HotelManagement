@@ -1,4 +1,5 @@
 ﻿using HotelManagement.Application.DTOs.HotelRoom;
+using HotelManagement.Application.Features.Commands.Hotels.Requests;
 using HotelManagement.Application.Features.HotelRooms.Commands.Create;
 using HotelManagement.Application.Features.Queries.HotelRooms.Requests;
 using HotelManagement.Application.Features.RoomTypes.Queries.Requests;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace HotelManagement.Api.Controllers;
 
 [Route("api/[controller]")]
+[Authorize]
 [ApiController]
 public class HotelRoomsController : ControllerBase
 {
@@ -20,8 +22,7 @@ public class HotelRoomsController : ControllerBase
     }
 
     // GET: api/<HotelRoomsController>
-    [Authorize(Roles =
-        "Administrator,Employee,Guest")]
+    [Authorize(Roles = "Administrator,Employee,Guest")]
     [HttpGet]
     public async Task<ICollection<HotelRoomDto>> Get() =>
         await _mediator.Send(new GetAllHotelRoomsRequest());
@@ -40,4 +41,9 @@ public class HotelRoomsController : ControllerBase
         Post(CreateHotelRoomDto createHotelRoomDto) =>
         await _mediator.Send(new CreateHotelRoomRequest
             { CreateHotelRoomDto = createHotelRoomDto });
+
+    [Authorize(Roles = "Administrator")]
+    [HttpDelete("{id}")]
+    public async Task<bool> Delete(int id) =>
+        await _mediator.Send(new DeleteHotelRequest { Id = id });
 }

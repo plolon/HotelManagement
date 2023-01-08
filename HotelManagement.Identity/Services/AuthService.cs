@@ -99,10 +99,11 @@ namespace HotelManagement.Identity.Services
             var symmetricSecurityKey =
                 new SymmetricSecurityKey(
                     Encoding.UTF8.GetBytes(_jwtSettings.Key));
+            
             var signingCredentials =
                 new SigningCredentials(symmetricSecurityKey,
                     SecurityAlgorithms.HmacSha256);
-
+            
             var jwtToken = new JwtSecurityToken(
                 issuer: _jwtSettings.Issuer,
                 audience: _jwtSettings.Audience,

@@ -28,6 +28,7 @@ namespace HotelManagement.Identity
 
             services.AddAuthentication(options =>
             {
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultAuthenticateScheme =
                     JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme =
@@ -41,7 +42,6 @@ namespace HotelManagement.Identity
                         ValidateIssuer = true,
                         ValidateAudience = true,
                         ValidateLifetime = true,
-                        RoleClaimType = "roles",
                         ClockSkew = TimeSpan.Zero,
                         ValidIssuer = configuration["JwtSettings:Issuer"],
                         ValidAudience = configuration["JwtSettings:Audience"],
