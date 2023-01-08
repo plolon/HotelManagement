@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
+using HotelManagement.Application.Abstraction.Messaging;
 using HotelManagement.Application.DTOs.HotelRoom;
 using HotelManagement.Application.Features.Queries.HotelRooms.Requests;
 using HotelManagement.Domain.Repositories;
-using MediatR;
 
 namespace HotelManagement.Application.Features.HotelRooms.Queries.Handlers
 {
-    public class GetAllHotelRoomsRequestHandler :IRequestHandler<GetAllHotelRoomsRequest, ICollection<HotelRoomDto>>
+    public class GetAllHotelRoomsRequestHandler :IQueryHandler<GetAllHotelRoomsRequest, ICollection<HotelRoomDto>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;

@@ -33,6 +33,14 @@ namespace HotelManagement.Api.Controllers
             return await _mediator.Send(new GetAllBookingsRequest());
         }
 
+        [HttpGet("{id}")]
+        public async Task<BookingDto> GetById(int id)
+        {
+            _logger.Information("BookingsController GET by id start");
+            return await _mediator.Send(
+                new GetBookingByIdRequest { Id = id });
+        }
+
         // POST: <BookingController>
         [Authorize(Roles = "Administrator")] //temp
         [HttpPost]

@@ -1,25 +1,29 @@
 ﻿using AutoMapper;
+using HotelManagement.Application.Abstraction.Messaging;
 using HotelManagement.Application.DTOs.Hotel;
 using HotelManagement.Application.Features.Hotels.Queries.Requests;
-using HotelManagement.Application.Features.Queries.Hotels.Requests;
 using HotelManagement.Domain.Repositories;
-using MediatR;
 
 namespace HotelManagement.Application.Features.Hotels.Queries.Handlers
 {
-    public class GetHotelByIdRequestHandler : IRequestHandler<GetHotelByIdRequest, HotelDto>
+    public class
+        GetHotelByIdRequestHandler : IQueryHandler<GetHotelByIdRequest,
+            HotelDto>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public GetHotelByIdRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public GetHotelByIdRequestHandler(IUnitOfWork unitOfWork,
+            IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<HotelDto> Handle(GetHotelByIdRequest request, CancellationToken cancellationToken)
+
+        public async Task<HotelDto> Handle(GetHotelByIdRequest request,
+            CancellationToken cancellationToken)
         {
-            var hotel =  await _unitOfWork.Hotels.GetAll();
+            var hotel = await _unitOfWork.Hotels.Get(request.Id);
             return _mapper.Map<HotelDto>(hotel);
         }
     }
