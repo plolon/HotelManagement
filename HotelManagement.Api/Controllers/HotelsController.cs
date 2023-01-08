@@ -23,8 +23,7 @@ namespace HotelManagement.Api.Controllers
         }
 
         // GET: api/<HotelsController>
-        //[Authorize(Roles =
-        //    "SuperAdministrator, Administrator, Premium, Gold, Silver, Basic")]
+        [Authorize(Roles = "Administrator,Employee,Guest")]
         [HttpGet]
         public async Task<ICollection<HotelDto>> Get()
         {
@@ -39,10 +38,11 @@ namespace HotelManagement.Api.Controllers
             await _mediator.Send(new GetHotelByIdRequest { Id = id });
 
         // POST: api/<HotelsController>
-        [Authorize(Roles = "Administrator")] // DEV
+        [Authorize(Roles = "Administrator,Employee,Guest")] // DEV
         [HttpPost]
         public async Task<HotelDto> Post([FromBody] SaveHotelDto saveHotelDto)
         {
+            _logger.Information("HotelsController POST start");
             return await _mediator.Send(new CreateHotelRequest
                 { SaveHotelDto = saveHotelDto });
         }
@@ -51,14 +51,20 @@ namespace HotelManagement.Api.Controllers
         [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public async Task<HotelDto> Update(
-            [FromBody] SaveHotelDto updateHotelDto, int id) =>
-            await _mediator.Send(new UpdateHotelRequest
+            [FromBody] SaveHotelDto updateHotelDto, int id)
+        {
+            _logger.Information("HotelsController PUT start");
+            return await _mediator.Send(new UpdateHotelRequest
                 { UpdateHotelDto = updateHotelDto, Id = id });
+        }
 
         // DELETE: api/<HotelsController>/id
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Employee,Guest")]
         [HttpDelete("{id}")]
-        public async Task<bool> Delete(int id) =>
-            await _mediator.Send(new DeleteHotelRequest { Id = id });
+        public async Task<bool> Delete(int id)
+        {
+            _logger.Information("HotelsController DELETE start");
+            return await _mediator.Send(new DeleteHotelRequest { Id = id });
+        }
     }
 }

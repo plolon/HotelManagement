@@ -3,6 +3,7 @@ using System;
 using HotelManagement.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(HotelManagementDbContext))]
-    partial class HotelManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230108012140_Dupa")]
+    partial class Dupa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
