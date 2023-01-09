@@ -10,7 +10,6 @@
    6. Change IRequest & IRequestHandlers in Queries to IQuery & IQueryHandler respectively
 2. Domain
 
-
 3. Infrastructure
 
     1. Change data annotations to FluentAPI

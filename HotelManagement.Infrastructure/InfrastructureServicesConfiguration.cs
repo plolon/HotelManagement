@@ -14,7 +14,7 @@ namespace HotelManagement.Infrastructure
             IConfiguration configuration)
         {
             var connString =
-                configuration.GetConnectionString("hotelmanagement-db");
+                configuration.GetConnectionString("MYSQLCONNSTR_localdb");
             services.AddDbContext<HotelManagementDbContext>(options =>
                 options.UseMySql(connString,
                     ServerVersion.AutoDetect(connString)));
