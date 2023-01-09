@@ -6,13 +6,13 @@ using HotelManagement.Domain.Repositories;
 namespace HotelManagement.Application.Features.HotelRooms.Commands.Update;
 
 public class
-    UpdateHotelRequestHandler : ICommandHandler<UpdateHotelRoomRequest,
+    UpdateHotelRoomRequestHandler : ICommandHandler<UpdateHotelRoomRequest,
         HotelRoomDto>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public UpdateHotelRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    public UpdateHotelRoomRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
@@ -27,7 +27,11 @@ public class
         await _unitOfWork.HotelRooms.Update(hotelRoom);
         await _unitOfWork.Complete();
 
-        var res = _mapper.Map<HotelRoomDto>(hotelRoom);
+        var updatedHotelRoom =
+            await _unitOfWork.HotelRooms.GetHotelRoomWithDetailsById(hotelRoom
+                .Id);
+
+        var res = _mapper.Map<HotelRoomDto>(updatedHotelRoom);
         return res;
     }
 }

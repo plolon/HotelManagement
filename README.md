@@ -6,11 +6,10 @@
 
    1. Change response to IActionResult interface
    2. Add logging to file feature
-   3. Add env flag to throw complete errors in dev env
-   4. Add Background Events layer w/ notifications, etc.
-   5. Add validation to controllers
-   6. Testing and expanding validation
-   7. Change IRequest & IRequestHandlers in Queries to IQuery & IQueryHandler respectively
+   3. Add Background Events layer w/ notifications, etc.
+   4. Add validation to controllers
+   5. Testing and expanding validation
+   6. Change IRequest & IRequestHandlers in Queries to IQuery & IQueryHandler respectively
 2. Domain
 
     1. Add relationship between Booking & User & Hotel

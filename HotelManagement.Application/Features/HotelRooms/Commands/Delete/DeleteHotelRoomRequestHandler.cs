@@ -1,12 +1,11 @@
 using HotelManagement.Application.Abstraction.Messaging;
-using HotelManagement.Application.Features.Commands.Hotels.Requests;
+using HotelManagement.Application.Features.HotelRooms.Commands.Delete;
 using HotelManagement.Domain.Repositories;
-using MediatR;
 
 namespace HotelManagement.Application.Features.HotelRooms.Commands
 {
     public class
-        DeleteHotelRequestHandler : ICommandHandler<DeleteHotelRequest, bool>
+        DeleteHotelRequestHandler : ICommandHandler<DeleteHotelRoomRequest, bool>
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -15,7 +14,7 @@ namespace HotelManagement.Application.Features.HotelRooms.Commands
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<bool> Handle(DeleteHotelRequest request,
+        public async Task<bool> Handle(DeleteHotelRoomRequest request,
             CancellationToken cancellationToken)
         {
             var res = await _unitOfWork.HotelRooms.Delete(request.Id);

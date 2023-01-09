@@ -28,7 +28,6 @@ namespace HotelManagement.Api.Controllers
         public async Task<ICollection<HotelDto>> Get()
         {
             _logger.Information("HotelsController GET start");
-            _logger.Information("{}");
             return await _mediator.Send(new GetAllHotelsRequest());
         }
 

@@ -1,4 +1,5 @@
-﻿using HotelManagement.Application.DTOs.RoomType;
+﻿using HotelManagement.Application.DTOs.Hotel;
+using HotelManagement.Application.DTOs.RoomType;
 
 namespace HotelManagement.Application.DTOs.HotelRoom
 {
@@ -6,9 +7,8 @@ namespace HotelManagement.Application.DTOs.HotelRoom
     {
         public int Id { get; set; }
         public string Number { get; set; }
-        public int RoomTypeId { get; set; }
         public virtual RoomTypeDto RoomType { get; set; }
-        public int HotelId { get; set; }
+        public virtual HotelDto Hotel { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
     }

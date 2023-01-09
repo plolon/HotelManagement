@@ -1,6 +1,6 @@
 ﻿using HotelManagement.Application.DTOs.HotelRoom;
-using HotelManagement.Application.Features.Commands.Hotels.Requests;
 using HotelManagement.Application.Features.HotelRooms.Commands.Create;
+using HotelManagement.Application.Features.HotelRooms.Commands.Delete;
 using HotelManagement.Application.Features.HotelRooms.Commands.Update;
 using HotelManagement.Application.Features.Queries.HotelRooms.Requests;
 using HotelManagement.Application.Features.RoomTypes.Queries.Requests;
@@ -70,6 +70,6 @@ public class HotelRoomsController : ControllerBase
     public async Task<bool> Delete(int id)
     {
         _logger.Information("HotelRoomsController DELETE start");
-        return await _mediator.Send(new DeleteHotelRequest { Id = id });
+        return await _mediator.Send(new DeleteHotelRoomRequest { Id = id });
     }
 }

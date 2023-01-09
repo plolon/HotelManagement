@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using HotelManagement.Application.DTOs.Booking;
+using HotelManagement.Application.Features.Bookings.Commands.Delete;
 using HotelManagement.Application.Features.Bookings.Commands.Requests;
 using HotelManagement.Application.Features.Bookings.Commands.Update;
 using HotelManagement.Application.Features.Commands.Hotels.Requests;
@@ -54,11 +55,11 @@ namespace HotelManagement.Api.Controllers
         }
 
         [Authorize(Roles = "Administrator")] //temp
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<bool> Delete(int id)
         {
             _logger.Information("BookingsController DELETE start");
-            return await _mediator.Send(new DeleteHotelRequest { Id = id });
+            return await _mediator.Send(new DeleteBookingRequest { Id = id });
         }
 
         [Authorize(Roles = "Administrator")] //temp

@@ -26,14 +26,17 @@ namespace HotelManagement.Application.Features.Bookings.Commands.Update
             {
                 return null;
             }
+
             var booking = await _unitOfWork.Bookings.Get(request.Id);
-            
+
             if (booking == null)
             {
                 return null;
             }
+
             _mapper.Map(request.UpdateBookingDto, booking);
             await _unitOfWork.Bookings.Update(booking);
+            await _unitOfWork.Complete();
             var res = _mapper.Map<BookingDto>(booking);
             return res;
         }

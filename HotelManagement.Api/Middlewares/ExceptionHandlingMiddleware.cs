@@ -1,7 +1,8 @@
 ﻿using System.Text.Json;
 using HotelManagement.Application.Exceptions;
 using HotelManagement.Domain.Exceptions;
-using ApplicationException = HotelManagement.Domain.Exceptions.ApplicationException;
+using ApplicationException =
+    HotelManagement.Domain.Exceptions.ApplicationException;
 using ILogger = Serilog.ILogger;
 
 namespace HotelManagement.Api.Middlewares
@@ -10,10 +11,12 @@ namespace HotelManagement.Api.Middlewares
     {
         private readonly ILogger _logger;
 
-        public ExceptionHandlingMiddleware(ILogger logger)
+        public ExceptionHandlingMiddleware(ILogger logger,
+            IWebHostEnvironment env)
         {
             _logger = logger;
         }
+
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
             try
@@ -27,7 +30,8 @@ namespace HotelManagement.Api.Middlewares
             }
         }
 
-        private static async Task HandleException(HttpContext httpContext, Exception e)
+        private static async Task HandleException(HttpContext httpContext,
+            Exception e)
         {
             var code = GetStatusCode(e);
             var response = new
@@ -40,7 +44,8 @@ namespace HotelManagement.Api.Middlewares
 
             httpContext.Response.ContentType = "application/json";
             httpContext.Response.StatusCode = code;
-            await httpContext.Response.WriteAsync(JsonSerializer.Serialize(response));
+            await httpContext.Response.WriteAsync(
+                JsonSerializer.Serialize(response));
         }
 
         private static int GetStatusCode(Exception exception) =>
@@ -59,7 +64,8 @@ namespace HotelManagement.Api.Middlewares
                 _ => "Server Error"
             };
 
-        private static IReadOnlyDictionary<string, string[]> GetErrors(Exception exception)
+        private static IReadOnlyDictionary<string, string[]> GetErrors(
+            Exception exception)
         {
             IReadOnlyDictionary<string, string[]> errors = null;
 

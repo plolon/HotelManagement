@@ -6,7 +6,8 @@ using MediatR;
 namespace HotelManagement.Application.Features.Bookings.Commands.Delete
 {
     public class
-        DeleteBookingRequestHandler : ICommandHandler<DeleteHotelRequest, bool>
+        DeleteBookingRequestHandler : ICommandHandler<DeleteBookingRequest,
+            bool>
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -15,10 +16,10 @@ namespace HotelManagement.Application.Features.Bookings.Commands.Delete
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<bool> Handle(DeleteHotelRequest request,
+        public async Task<bool> Handle(DeleteBookingRequest request,
             CancellationToken cancellationToken)
         {
-            var result = await _unitOfWork.Hotels.Delete(request.Id);
+            var result = await _unitOfWork.Bookings.Delete(request.Id);
             await _unitOfWork.Complete();
             return result;
         }
