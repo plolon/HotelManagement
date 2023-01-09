@@ -27,12 +27,13 @@ var app = builder.Build();
 
 app.UseAuthentication();
 
-// if (app.Environment.IsDevelopment()) // always IsDevelopment
-// {
-app.UseSwagger();
-app.UseSwaggerUI(c =>
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "HotelManagement.Api v1"));
-// }
+if (app.Environment.IsDevelopment()) // always IsDevelopment
+{
+    app.PrepareDatabase();
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "HotelManagement.Api v1"));
+}
 
 app.UseSerilogRequestLogging();
 

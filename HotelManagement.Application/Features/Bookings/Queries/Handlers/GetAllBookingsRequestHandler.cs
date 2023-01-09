@@ -26,9 +26,7 @@ namespace HotelManagement.Application.Features.Queries.Bookings.Handlers
         {
             var bookings = await _unitOfWork.Bookings.GetAll();
 
-            return !bookings.Any()
-                ? null
-                : _mapper.Map<ICollection<BookingDto>>(bookings);
+            return _mapper.Map<ICollection<BookingDto>>(bookings);
         }
     }
 }
