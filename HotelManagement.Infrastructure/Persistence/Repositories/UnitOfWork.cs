@@ -1,4 +1,5 @@
-﻿using HotelManagement.Domain.Repositories;
+﻿using HotelManagement.Domain.Models.Common;
+using HotelManagement.Domain.Repositories;
 
 namespace HotelManagement.Infrastructure.Persistence.Repositories
 {
@@ -9,13 +10,11 @@ namespace HotelManagement.Infrastructure.Persistence.Repositories
         public UnitOfWork(
             HotelManagementDbContext dbContext,
             IHotelRepository hotelRepository,
-            IRoomTypeRepository roomTypeRepository,
             IHotelRoomRepository hotelRoomRepository,
             IBookingRepository bookingRepository)
         {
             _dbContext = dbContext;
             Hotels = hotelRepository;
-            RoomTypes = roomTypeRepository;
             HotelRooms = hotelRoomRepository;
             Bookings = bookingRepository;
         }
@@ -32,8 +31,12 @@ namespace HotelManagement.Infrastructure.Persistence.Repositories
         }
 
         public IHotelRepository Hotels { get; }
-        public IRoomTypeRepository RoomTypes { get; }
         public IHotelRoomRepository HotelRooms { get; }
         public IBookingRepository Bookings { get; }
+
+        public IGenericRepository<T> GetGenericRepository<T>() where T: BaseDomainEnumEntity
+        {
+            return new GenericRepository<T>(_dbContext);
+        }
     }
 }

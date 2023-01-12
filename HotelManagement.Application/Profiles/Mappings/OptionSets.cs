@@ -1,4 +1,4 @@
-﻿using HotelManagement.Application.DTOs.RoomType;
+﻿using HotelManagement.Application.DTOs.OptionSets;
 using HotelManagement.Domain.Models.OptionSets;
 
 namespace HotelManagement.Application.Profiles
@@ -8,6 +8,7 @@ namespace HotelManagement.Application.Profiles
         public void CreateOptionSetMappings()
         {
             CreateMap<RoomType, RoomTypeDto>();
+            CreateMap<Status, StatusDto>();
         }
     }
 }

@@ -9,7 +9,6 @@ using ILogger = Serilog.ILogger;
 namespace HotelManagement.Api.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
     [ApiController]
     public class HotelsController : ControllerBase
     {
@@ -23,7 +22,6 @@ namespace HotelManagement.Api.Controllers
         }
 
         // GET: api/<HotelsController>
-        [Authorize(Roles = "Administrator,Employee,Guest")]
         [HttpGet]
         public async Task<ICollection<HotelDto>> Get()
         {
@@ -37,7 +35,7 @@ namespace HotelManagement.Api.Controllers
             await _mediator.Send(new GetHotelByIdRequest { Id = id });
 
         // POST: api/<HotelsController>
-        [Authorize(Roles = "Administrator,Employee,Guest")] // DEV
+        [Authorize(Roles = "Administrator,Employee")]
         [HttpPost]
         public async Task<HotelDto> Post([FromBody] SaveHotelDto saveHotelDto)
         {
@@ -47,7 +45,7 @@ namespace HotelManagement.Api.Controllers
         }
 
         // PUT: api/<HotelsController>/id
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Employee")]
         [HttpPut("{id}")]
         public async Task<HotelDto> Update(
             [FromBody] SaveHotelDto updateHotelDto, int id)
@@ -58,7 +56,7 @@ namespace HotelManagement.Api.Controllers
         }
 
         // DELETE: api/<HotelsController>/id
-        [Authorize(Roles = "Administrator,Employee,Guest")]
+        [Authorize(Roles = "Administrator,Employee")]
         [HttpDelete("{id}")]
         public async Task<bool> Delete(int id)
         {

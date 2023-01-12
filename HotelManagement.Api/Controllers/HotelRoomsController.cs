@@ -12,7 +12,6 @@ using ILogger = Serilog.ILogger;
 namespace HotelManagement.Api.Controllers;
 
 [Route("api/[controller]")]
-[Authorize]
 [ApiController]
 public class HotelRoomsController : ControllerBase
 {
@@ -26,7 +25,6 @@ public class HotelRoomsController : ControllerBase
     }
 
     // GET: api/<HotelRoomsController>
-    [Authorize(Roles = "Administrator,Employee,Guest")]
     [HttpGet]
     public async Task<ICollection<HotelRoomDto>> Get()
     {
@@ -35,8 +33,7 @@ public class HotelRoomsController : ControllerBase
     }
 
     // GET: api/<HotelRoomsController>/id
-    [Authorize(Roles =
-        "Administrator,Employee,Guest")]
+
     [HttpGet("{id}")]
     public async Task<HotelRoomDto> Get(int id)
     {
@@ -45,7 +42,7 @@ public class HotelRoomsController : ControllerBase
     }
 
     // POST: api/<RoomTypesController>
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator,Employee")]
     [HttpPost]
     public async Task<HotelRoomDto>
         Post([FromBody] CreateHotelRoomDto createHotelRoomDto)
@@ -55,7 +52,7 @@ public class HotelRoomsController : ControllerBase
             { CreateHotelRoomDto = createHotelRoomDto });
     }
 
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator,Employee")]
     [HttpPut("{id}")]
     public async Task<HotelRoomDto> Update(
         [FromBody] CreateHotelRoomDto createHotelRoomDto, int id)
@@ -65,7 +62,7 @@ public class HotelRoomsController : ControllerBase
             { UpdateHotelRoomDto = createHotelRoomDto, Id = id });
     }
 
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator,Employee")]
     [HttpDelete("{id}")]
     public async Task<bool> Delete(int id)
     {

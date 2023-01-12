@@ -35,7 +35,6 @@ namespace HotelManagement.Infrastructure
                     ApplicationUserRepository>();
             services.AddScoped<IHotelRepository, HotelRepository>();
             services.AddScoped<IHotelRoomRepository, HotelRoomRepository>();
-            services.AddScoped<IRoomTypeRepository, RoomTypeRepository>();
             services.AddScoped<IBookingRepository, BookingRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

@@ -1,4 +1,4 @@
-﻿namespace HotelManagement.Application.DTOs.RoomType
+﻿namespace HotelManagement.Application.DTOs.OptionSets
 {
     public class RoomTypeDto
     {

@@ -6,9 +6,7 @@ using HotelManagement.Domain.Repositories;
 
 namespace HotelManagement.Application.Features.HotelRooms.Commands.Create
 {
-    public class
-        CreateHotelRoomRequestHandler : ICommandHandler<CreateHotelRoomRequest,
-            HotelRoomDto>
+    public class CreateHotelRoomRequestHandler : ICommandHandler<CreateHotelRoomRequest, HotelRoomDto>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -19,18 +17,14 @@ namespace HotelManagement.Application.Features.HotelRooms.Commands.Create
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-
-        public async Task<HotelRoomDto> Handle(CreateHotelRoomRequest request,
-            CancellationToken cancellationToken)
-        {
-            var hotelRoom =
-                _mapper.Map<HotelRoom>(request.CreateHotelRoomDto);
-            hotelRoom = await _unitOfWork.HotelRooms.Add(hotelRoom);
-            await _unitOfWork.Complete();
-            var newHotelRoom =
-                await _unitOfWork.HotelRooms.GetHotelRoomWithDetailsById(
-                    hotelRoom.Id);
-            return _mapper.Map<HotelRoomDto>(newHotelRoom);
+            public async Task<HotelRoomDto> Handle(CreateHotelRoomRequest request,
+                CancellationToken cancellationToken)
+            {
+                var hotelRoom =
+                    _mapper.Map<HotelRoom>(request.CreateHotelRoomDto);
+                hotelRoom = await _unitOfWork.HotelRooms.Add(hotelRoom);
+                await _unitOfWork.Complete();
+                return _mapper.Map<HotelRoomDto>(hotelRoom);
+            }
         }
-    }
 }

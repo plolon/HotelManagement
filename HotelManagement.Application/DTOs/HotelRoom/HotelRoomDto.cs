@@ -1,5 +1,5 @@
 ﻿using HotelManagement.Application.DTOs.Hotel;
-using HotelManagement.Application.DTOs.RoomType;
+using HotelManagement.Application.DTOs.OptionSets;
 
 namespace HotelManagement.Application.DTOs.HotelRoom
 {
