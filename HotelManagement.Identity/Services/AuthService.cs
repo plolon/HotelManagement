@@ -57,26 +57,28 @@ namespace HotelManagement.Identity.Services
             return response;
         }
 
-        public async Task<ApplicationUser> Register(RegistrationRequest request)
+        public async Task<string> Register(RegistrationRequest request)
         {
             var isUserExists = await _userManager.FindByEmailAsync(request.Email);
-            
+
             if (isUserExists != null)
                 throw new Exception("User with this email already exists");
 
             var newUser = _mapper.Map<ApplicationUser>(request);
-            
-            var hasher = new PasswordHasher<ApplicationUser>();
-            
-            newUser.PasswordHash = hasher.HashPassword(null, request.Password);
 
+            var hasher = new PasswordHasher<ApplicationUser>();
+
+            newUser.PasswordHash = hasher.HashPassword(null, request.Password);
             var res = await _userManager.CreateAsync(newUser);
-            
+            //await _userManager.AddToRoleAsync(newUser, "User");
+            var roles = await _userManager.GetRolesAsync(newUser);
+            var users = await _userManager.GetUsersInRoleAsync("Administrator");
+            return $"user roles: {String.Join(",", roles)} all roles: {String.Join(",", users)}";
             // TODO: Throw error if res returns one
 
-            await _unitOfWork.Complete();
+            //await _unitOfWork.Complete();
 
-            return newUser; 
+            //return newUser;
         }
 
         private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)
@@ -99,11 +101,11 @@ namespace HotelManagement.Identity.Services
             var symmetricSecurityKey =
                 new SymmetricSecurityKey(
                     Encoding.UTF8.GetBytes(_jwtSettings.Key));
-            
+
             var signingCredentials =
                 new SigningCredentials(symmetricSecurityKey,
                     SecurityAlgorithms.HmacSha256);
-            
+
             var jwtToken = new JwtSecurityToken(
                 issuer: _jwtSettings.Issuer,
                 audience: _jwtSettings.Audience,
