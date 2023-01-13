@@ -57,7 +57,7 @@ namespace HotelManagement.Identity.Services
             return response;
         }
 
-        public async Task<string> Register(RegistrationRequest request)
+        public async Task<ApplicationUser> Register(RegistrationRequest request)
         {
             var isUserExists = await _userManager.FindByEmailAsync(request.Email);
 
@@ -70,15 +70,10 @@ namespace HotelManagement.Identity.Services
 
             newUser.PasswordHash = hasher.HashPassword(null, request.Password);
             var res = await _userManager.CreateAsync(newUser);
-            //await _userManager.AddToRoleAsync(newUser, "User");
-            var roles = await _userManager.GetRolesAsync(newUser);
-            var users = await _userManager.GetUsersInRoleAsync("Administrator");
-            return $"user roles: {String.Join(",", roles)} all roles: {String.Join(",", users)}";
-            // TODO: Throw error if res returns one
+            await _userManager.AddToRoleAsync(newUser, "Guest");
+            await _unitOfWork.Complete();
 
-            //await _unitOfWork.Complete();
-
-            //return newUser;
+            return newUser;
         }
 
         private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)

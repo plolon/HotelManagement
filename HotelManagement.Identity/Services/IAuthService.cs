@@ -6,7 +6,7 @@ namespace HotelManagement.Identity.Services
     public interface IAuthService
     {
         Task<AuthResponse> Login(AuthRequest request);
-        Task<string> Register(RegistrationRequest request);
+        Task<ApplicationUser> Register(RegistrationRequest request);
     }
 }
 
