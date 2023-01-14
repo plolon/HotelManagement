@@ -11,10 +11,10 @@ namespace HotelManagement.Api.Controllers;
 [ApiController]
 public class OptionSets : ControllerBase
 {
-    private readonly IMediator _mediator;
+    private readonly ISender _mediator;
     private readonly ILogger _logger;
 
-    public OptionSets(IMediator mediator, ILogger logger)
+    public OptionSets(ISender mediator, ILogger logger)
     {
         _mediator = mediator;
         _logger = logger;

@@ -9,4 +9,3 @@ namespace HotelManagement.Identity.Services
         Task<ApplicationUser> Register(RegistrationRequest request);
     }
 }
-

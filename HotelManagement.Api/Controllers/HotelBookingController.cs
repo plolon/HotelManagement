@@ -16,10 +16,10 @@ namespace HotelManagement.Api.Controllers
     [ApiController]
     public class BookingController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly ISender _mediator;
         private readonly ILogger _logger;
 
-        public BookingController(IMediator mediator, ILogger logger)
+        public BookingController(ISender mediator, ILogger logger)
         {
             _mediator = mediator;
             _logger = logger;
@@ -43,7 +43,6 @@ namespace HotelManagement.Api.Controllers
         }
 
         // POST: <BookingController>
-        [Authorize(Roles = "Administrator")] //temp
         [HttpPost]
         public async Task<BookingDto> Post(
             [FromBody] SaveBookingDto saveBookingDto)
@@ -54,7 +53,7 @@ namespace HotelManagement.Api.Controllers
                     { SaveBookingDto = saveBookingDto });
         }
 
-        [Authorize(Roles = "Administrator")] //temp
+        [Authorize(Roles = "Administrator,Employee,Guest")]
         [HttpDelete("{id}")]
         public async Task<bool> Delete(int id)
         {
@@ -62,7 +61,7 @@ namespace HotelManagement.Api.Controllers
             return await _mediator.Send(new DeleteBookingRequest { Id = id });
         }
 
-        [Authorize(Roles = "Administrator")] //temp
+        [Authorize(Roles = "Administrator,Employee,Guest")]
         [HttpPut("{id}")]
         public async Task<BookingDto> Update(
             [FromBody] SaveBookingDto updateBookingDto, int id)

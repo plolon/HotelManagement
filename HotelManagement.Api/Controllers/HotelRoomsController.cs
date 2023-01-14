@@ -15,10 +15,10 @@ namespace HotelManagement.Api.Controllers;
 [ApiController]
 public class HotelRoomsController : ControllerBase
 {
-    private readonly IMediator _mediator;
+    private readonly ISender _mediator;
     private readonly ILogger _logger;
 
-    public HotelRoomsController(IMediator mediator, ILogger logger)
+    public HotelRoomsController(ISender mediator, ILogger logger)
     {
         _mediator = mediator;
         _logger = logger;
