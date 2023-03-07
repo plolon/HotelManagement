@@ -7,5 +7,6 @@ namespace HotelManagement.Identity.Services
     {
         Task<AuthResponse> Login(AuthRequest request);
         Task<ApplicationUser> Register(RegistrationRequest request);
+        Task<bool> DeleteUser(Guid id);
     }
 }
