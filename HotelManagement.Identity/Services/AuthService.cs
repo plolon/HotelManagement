@@ -76,6 +76,24 @@ namespace HotelManagement.Identity.Services
             return newUser;
         }
 
+        public async Task<bool> DeleteUser(Guid id)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null)
+                return false;
+            try
+            {
+                await _userManager.DeleteAsync(user);
+                return true;
+            }
+            catch
+            {
+                // TODO inject logger for stack trace with error message :) 
+                return false;
+            }
+            await _userManager.DeleteAsync(user);
+        }
+        
         private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)
         {
             IList<Claim> userClaims = await _userManager.GetClaimsAsync(user);

@@ -32,5 +32,14 @@ namespace HotelManagement.Api.Controllers
             _logger.Information("UsersController POST Register start");
             return Ok(await _authService.Register(request));
         }
+
+        // TODO roles and complete crud for admin panel to manage users 
+        [HttpDelete("delete")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            _logger.Information("---> Delete method user controller test1");
+            var result = await _authService.DeleteUser(id);
+            return result == true ? Ok("Success") : BadRequest("Failed");
+        }
     }
 }
